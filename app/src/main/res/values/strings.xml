@@ -1,5 +1,7 @@
 <resources>
     <string name="label_app_name">Sea Connect</string>
+    <string name="label_ok">Ok</string>
+    <string name="label_cancel">Cancel</string>
     <string name="label_lunch_activity">Lunch</string>
     <string name="label_share_lunch_activity">Share Lunch</string>
     <string name="error_network_connection">Network Connection Error</string>

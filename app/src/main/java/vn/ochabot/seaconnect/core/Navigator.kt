@@ -3,6 +3,8 @@ package vn.ochabot.seaconnect.core
 import android.app.Activity
 import android.content.Intent
 import android.provider.CalendarContract
+import android.support.v4.app.ActivityOptionsCompat
+import android.widget.ImageView
 import vn.ochabot.seaconnect.R
 import vn.ochabot.seaconnect.challenges.ChallengesActivity
 import vn.ochabot.seaconnect.core.base.BaseActivity
@@ -29,6 +31,13 @@ class Navigator @Inject constructor() {
         activity.startActivity(ShareLunchActivity.forActivity(activity, id))
         activityTransitionSlide(activity)
     }
+
+    fun openShareLunchActivity(activity: BaseActivity, id: String, view: ImageView) {
+        var activityCompats = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, view, "image_your_meal")
+        activity.startActivity(ShareLunchActivity.forActivity(activity, id), activityCompats.toBundle())
+//        activityTransitionSlide(activity)
+    }
+
 
     fun openEventsActivity(activity: BaseActivity) {
         activity.startActivity(Intent(activity, EventsActivity::class.java))
