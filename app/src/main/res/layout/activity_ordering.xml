@@ -4,14 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_horizontal_margin">
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:orientation="horizontal">
@@ -33,7 +30,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="30dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="Challenges"
+            android:text="Share Lunch"
             android:textColor="@color/text_dark"
             android:textSize="22sp" />
     </LinearLayout>
@@ -42,14 +39,17 @@
         android:id="@+id/layoutYourFood"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:animateLayoutChanges="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/opensans_regular"
-            android:padding="10dp"
+            android:fontFamily="@font/opensans_semibold"
+            android:padding="5dp"
             android:text="@string/label_your_food"
             android:textColor="@color/text_dark"
             android:textSize="20sp" />
@@ -87,7 +87,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:fontFamily="@font/opensans_semibold"
+                android:fontFamily="@font/opensans_regular"
                 android:text="test"
                 android:textColor="@color/text_dark"
                 android:textSize="18sp"
@@ -108,12 +108,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/opensans_regular"
+            android:fontFamily="@font/opensans_semibold"
             android:padding="5dp"
             android:text="@string/label_share_food"
             android:textColor="@color/text_dark"

@@ -33,7 +33,7 @@ class App : Application() {
     }
 
     private fun initAppComponent() {
-        appComponent.inject(this)
         appContext = this
+        appComponent.inject(this)
     }
 }
