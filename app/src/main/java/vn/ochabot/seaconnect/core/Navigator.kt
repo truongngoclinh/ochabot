@@ -2,12 +2,13 @@ package vn.ochabot.seaconnect.core
 
 import android.app.Activity
 import android.content.Intent
-import android.support.v4.app.ActivityCompat
+import android.provider.CalendarContract
 import android.support.v4.app.ActivityOptionsCompat
 import android.widget.ImageView
 import vn.ochabot.seaconnect.R
 import vn.ochabot.seaconnect.challenges.ChallengesActivity
 import vn.ochabot.seaconnect.core.base.BaseActivity
+import vn.ochabot.seaconnect.event.EventDetailActivity
 import vn.ochabot.seaconnect.event.EventsActivity
 import vn.ochabot.seaconnect.lunch.LunchActivity
 import vn.ochabot.seaconnect.lunch.ShareLunchActivity
@@ -45,6 +46,13 @@ class Navigator @Inject constructor() {
 
     fun openChallengesActivity(activity: BaseActivity) {
         activity.startActivity(Intent(activity, ChallengesActivity::class.java))
+        activityTransitionSlide(activity)
+    }
+
+    fun openEventDetailActivity(activity: BaseActivity, eventId: String) {
+        val intent = Intent(activity, EventDetailActivity::class.java)
+        intent.putExtra(CalendarContract.Instances.EVENT_ID, eventId)
+        activity.startActivity(intent)
         activityTransitionSlide(activity)
     }
 }

@@ -18,4 +18,11 @@
     <string name="label_sea_setting">Settings</string>
     <string name="label_join">Join</string>
     <string name="label_joined">Joined</string>
+    <string name="label_time">Time</string>
+    <string name="label_hosted_by">Hosted By</string>
+    <string name="label_location">Location</string>
+    <string name="label_attendances">Attendances(%1$d)</string>
+    <string name="label_comments">Comments(%1$d)</string>
+    <string name="label_say_something">Say something</string>
+    <string name="label_description">Description</string>
 </resources>
