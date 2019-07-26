@@ -97,7 +97,6 @@ public class ChallengesActivity extends BaseActivity {
 
 
     public static class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.MyViewHolder> {
-
         List<QueryDocumentSnapshot> mData;
 
         @NonNull

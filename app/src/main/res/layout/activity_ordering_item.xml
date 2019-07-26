@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:minHeight="@dimen/button_default_height">
+
+    <ImageView
+        android:id="@+id/lunchImg"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:src="@drawable/event" />
+
+    <TextView
+        android:id="@+id/lunchTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/acceptFoodButton"
+        style="@style/primary_action_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:text="Accept"
+        android:textSize="14sp"
+        android:visibility="gone" />
+</LinearLayout>

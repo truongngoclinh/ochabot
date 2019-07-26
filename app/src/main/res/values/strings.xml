@@ -8,6 +8,8 @@
     <string name="label_login_with_google">Login with Google</string>
     <string name="label_logout">Logout</string>
     <string name="label_sea_lunch">Sea Lunch</string>
+    <string name="label_your_food">Your food</string>
+    <string name="label_share_food">Share food</string>
     <string name="label_sea_challenges">Sea Challenges</string>
     <string name="label_sea_events">Sea Events</string>
     <string name="label_sea_setting">Sea Setting</string>

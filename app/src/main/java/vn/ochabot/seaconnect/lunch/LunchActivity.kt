@@ -39,10 +39,10 @@ class LunchActivity : BaseActivity() {
             observe(lunchData, ::loadData)
         }
 
-        initList()
+        initView()
     }
 
-    private fun initList() {
+    private fun initView() {
         lunchAdapter = LunchAdapter(object : ItemInteractor<Lunch> {
             override fun onItemClick(data: Lunch) {
             }
@@ -53,6 +53,10 @@ class LunchActivity : BaseActivity() {
             addItemDecoration(GridDividerItemDecoration(SPAN_COUNT, 40))
         }
 
+        submitButton.setOnClickListener {
+            navigator.openOrderActivity(this@LunchActivity, "0")
+        }
+
         lunchViewModel.getLunchData()
     }
 
@@ -61,13 +65,15 @@ class LunchActivity : BaseActivity() {
         lunchAdapter.data = data!!
     }
 
-    class LunchAdapter constructor(private val listener: ItemInteractor<Lunch>) : BaseRecyclerAdapter<Lunch, LunchAdapter.LunchHolder>() {
+    class LunchAdapter constructor(private val listener: ItemInteractor<Lunch>) :
+            BaseRecyclerAdapter<Lunch, LunchAdapter.LunchHolder>() {
         override fun createHolder(parent: ViewGroup, viewType: Int): LunchHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_lunch_item, parent, false)
             return LunchHolder(view, listener)
         }
 
-        inner class LunchHolder(itemView: View, listener: ItemInteractor<Lunch>) : BaseRecyclerAdapter.ViewHolder<Lunch>(itemView) {
+        inner class LunchHolder(itemView: View, listener: ItemInteractor<Lunch>) :
+                BaseRecyclerAdapter.ViewHolder<Lunch>(itemView) {
             init {
                 itemView.setOnClickListener { listener.onItemClick(data[adapterPosition]) }
             }

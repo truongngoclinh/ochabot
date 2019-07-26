@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/activity_horizontal_margin"
-    android:baselineAligned="false"
-    android:orientation="vertical">
+    android:layout_margin="@dimen/activity_horizontal_margin">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/lunchList"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:layout_above="@+id/submitLayout" />
 
     <LinearLayout
+        android:id="@+id/submitLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -24,6 +23,8 @@
             style="@style/primary_action_button"
             android:layout_width="match_parent"
             android:layout_height="46dp"
-            android:text="Submit" />
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:text="Submit"
+            android:textAlignment="center" />
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

@@ -2,15 +2,75 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp"
     android:baselineAligned="false"
-    android:orientation="horizontal">
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/shareLunchList"
+    <LinearLayout
+        android:id="@+id/layoutYourFood"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    </android.support.v7.widget.RecyclerView>
+        <TextView
+            style="@style/Roboto.18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/label_your_food" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:minHeight="@dimen/button_default_height">
+
+            <ImageView
+                android:id="@+id/lunchImg"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:src="@drawable/event" />
+
+            <TextView
+                android:id="@+id/lunchTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/shareFoodButton"
+                style="@style/primary_action_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:text="Share"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutShareFood"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/Roboto.18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/label_share_food" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/shareLunchList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
 </LinearLayout>
