@@ -1,4 +1,4 @@
-package com.linhtruong.sample.core.platform.base
+package vn.ochabot.seaconnect.core.base
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
