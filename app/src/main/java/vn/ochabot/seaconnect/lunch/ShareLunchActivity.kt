@@ -3,6 +3,7 @@ package vn.ochabot.seaconnect.lunch
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_ordering.view.lunchTitle
 import kotlinx.android.synthetic.main.activity_ordering_item.view.*
 import timber.log.Timber
 import vn.ochabot.seaconnect.R
+import vn.ochabot.seaconnect.core.VerticalSpaceItemDecoration
 import vn.ochabot.seaconnect.core.base.BaseActivity
 import vn.ochabot.seaconnect.core.base.BaseRecyclerAdapter
 import vn.ochabot.seaconnect.core.base.extension.failure
@@ -91,6 +93,7 @@ class ShareLunchActivity : BaseActivity() {
         shareLunchList.apply {
             adapter = shareLunchAdapter
             layoutManager = LinearLayoutManager(this@ShareLunchActivity, LinearLayoutManager.VERTICAL, false)
+            addItemDecoration(VerticalSpaceItemDecoration(20))
         }
 
         lunchViewModel.getShareLunchData()

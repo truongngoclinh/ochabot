@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-    android:minHeight="@dimen/button_default_height">
+    android:background="@drawable/bg_white_square_rounded"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    android:padding="24dp">
 
     <ImageView
         android:id="@+id/lunchImg"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
         android:scaleType="fitXY"
         android:src="@drawable/meal_0" />
@@ -19,7 +20,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:fontFamily="@font/opensans_semibold"
+        android:text="test"
+        android:textColor="@color/text_dark"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/acceptFoodButton"

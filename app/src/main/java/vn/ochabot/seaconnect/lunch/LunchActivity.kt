@@ -57,7 +57,7 @@ class LunchActivity : BaseActivity() {
         lunchList.apply {
             adapter = lunchAdapter
             layoutManager = GridLayoutManager(this@LunchActivity, SPAN_COUNT)
-            addItemDecoration(GridDividerItemDecoration(SPAN_COUNT, 100))
+            addItemDecoration(GridDividerItemDecoration(SPAN_COUNT, 120))
         }
 
         submitButton.setOnClickListener {
