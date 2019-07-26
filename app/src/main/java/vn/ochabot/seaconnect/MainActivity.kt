@@ -1,11 +1,10 @@
 package vn.ochabot.seaconnect
 
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
-import vn.ochabot.seaconnect.core.Navigator
+import android.view.View
+import android.widget.TextView
 import vn.ochabot.seaconnect.core.base.BaseActivity
 import vn.ochabot.seaconnect.model.User
-import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
     override fun title(): Int = R.string.label_app_name
@@ -13,13 +12,30 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val user = User("1", "nhutlm", "Le Minh Nhut", "minhnhut.le@ocha.vn", "0968373869")
-    }
+        val user = User("1", "nhutlm", "Le\nMinh Nhut", "minhnhut.le@ocha.vn", "0968373869")
 
-    override fun onCreateView(savedInstanceState: Bundle?) {
-        appComponent.inject(this)
-        oc_menu_group_1.setOnClickListener {
+        findViewById<TextView>(R.id.user_name).text = user.fullName
+
+        findViewById<View>(R.id.lunch_menu).setOnClickListener {
             navigator.openLunchActivity(this)
         }
+
+        findViewById<View>(R.id.challenge_menu).setOnClickListener {
+            //Todo
+        }
+
+        findViewById<View>(R.id.event_menu).setOnClickListener {
+            //Todo
+        }
+
+        findViewById<View>(R.id.setting_menu).setOnClickListener {
+            //Todo
+        }
+
+        findViewById<View>(R.id.logout_btn).setOnClickListener {
+            finish()
+        }
+
     }
+
 }

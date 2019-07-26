@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#EEEEEE</color>
-    <color name="white">#EEEEEE</color>
+    <color name="primary">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="divider">#42090E2B</color>
-    <color name="text_dark">#4F5664</color>
+    <color name="text_dark">#565996</color>
     <color name="text_dark_70">#b24f5664</color>
     <color name="text_dark_30">#4D4F5664</color>
     <color name="text_dark_40">#664f5664</color>
-    <color name="bg_btn_login">#EF3024</color>
-    <color name="bg_btn_login_pressed">#BB2F2F</color>
-    <color name="text_blue_color">#37A7FF</color>
     <color name="bg_menu_cell">#F8FAFC</color>
+    <color name="bg_menu_cell_pressed">#664f5664</color>
     <color name="primary_button_disabled">#40488cf1</color>
-    <color name="primary_button_normal">#488cf1</color>
-    <color name="app_primary_color_highlight">#80488CF1</color>
+    <color name="primary_button_normal">#0074df</color>
+    <color name="app_primary_color_highlight">#2196F3</color>
 
 </resources>

@@ -1,95 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:padding="24dp">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="24dp"
+                android:background="@color/white">
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/logout_btn"
+              android:fontFamily="@font/opensans_bold"
+              android:layout_alignParentEnd="true"
+              android:textColor="#DE907D"
+              android:textSize="18sp"
+              android:layout_marginTop="14dp"
+              android:layout_marginEnd="14dp"
+              android:text="@string/label_logout"/>
 
-    <TextView
-        android:id="@+id/logout_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="14dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@string/label_logout"
-        android:textColor="@color/text_blue_color"
-        android:textSize="18sp" />
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/user_name"
+              android:layout_below="@id/logout_btn"
+              android:layout_marginTop="10dp"
+              android:text="Le\nMinh Nhut"
+              android:textSize="30sp"
+              android:fontFamily="@font/opensans_bold"
+              android:textColor="@color/text_dark"
+    />
 
-    <TextView
-        android:id="@+id/user_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/logout_btn"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Le Minh Nhut"
-        android:textColor="@color/text_dark_70"
-        android:textSize="30sp" />
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/oc_menu_group_1"
+                  android:layout_below="@id/user_name"
+                  android:layout_marginTop="50dp">
 
-    <LinearLayout
-        android:id="@+id/oc_menu_group_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/user_name"
-        android:layout_marginTop="60dp"
-        android:clickable="true"
-        android:orientation="horizontal">
+        <RelativeLayout
+                android:id="@+id/lunch_menu"
+                android:layout_width="0dp"
+                android:layout_height="240dp"
+                android:layout_weight="1"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center_vertical"
+                android:background="@drawable/oc_bg_home_menu">
 
-        <TextView
-            android:id="@+id/lunch_menu"
-            android:layout_width="0dp"
-            android:layout_height="300dp"
-            android:layout_weight="1"
-            android:background="@drawable/oc_bg_home_menu"
-            android:gravity="center"
-            android:text="@string/label_sea_lunch"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintWidth_percent="0.5" />
+            <ImageView
+                    android:id="@+id/lunch_menu_icon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/rice"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/text_dark"
+                    android:textSize="18sp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:layout_below="@id/lunch_menu_icon"
+                    android:text="@string/label_sea_lunch"/>
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/challenge_menu"
-            android:layout_width="0dp"
-            android:layout_height="300dp"
-            android:layout_marginStart="24dp"
-            android:layout_weight="1"
-            android:background="@drawable/oc_bg_home_menu"
-            android:gravity="center"
-            android:text="@string/label_sea_challenges"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintWidth_percent="0.5" />
+        <RelativeLayout android:layout_width="0dp"
+                        android:layout_height="240dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="24dp"
+                        android:gravity="center_vertical"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:background="@drawable/oc_bg_home_menu">
+
+            <ImageView
+                    android:id="@+id/challenge_menu_icon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/challenge"/>
+
+            <TextView
+                    android:id="@+id/challenge_menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_sea_challenges"
+                    android:background="@drawable/oc_bg_home_menu"
+                    android:textColor="@color/text_dark"
+                    android:textSize="18sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/challenge_menu_icon"
+                    android:fontFamily="@font/opensans_semibold"/>
+        </RelativeLayout>
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/oc_menu_group_1"
-        android:layout_centerInParent="true"
-        android:orientation="horizontal">
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_below="@id/oc_menu_group_1"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="24dp"
+                  android:layout_centerInParent="true">
 
-        <TextView
-            android:id="@+id/event_menu"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="24dp"
-            android:layout_weight="1"
-            android:background="@drawable/oc_bg_home_menu"
-            android:gravity="center"
-            android:text="@string/label_sea_events"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintWidth_percent="0.5" />
+        <RelativeLayout android:layout_width="0dp"
+                        android:layout_height="160dp"
+                        android:layout_weight="1"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/oc_bg_home_menu">
 
-        <TextView
-            android:id="@+id/setting_menu"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_weight="1"
-            android:background="@drawable/oc_bg_home_menu"
-            android:gravity="center"
-            android:text="@string/label_sea_setting" />
+            <ImageView
+                    android:id="@+id/event_menu_icon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/event"/>
+
+            <TextView
+                    android:id="@+id/event_menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_sea_events"
+                    android:background="@drawable/oc_bg_home_menu"
+                    android:textColor="@color/text_dark"
+                    android:textSize="18sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/event_menu_icon"
+                    android:fontFamily="@font/opensans_semibold"/>
+        </RelativeLayout>
+
+        <RelativeLayout android:layout_width="0dp"
+                        android:layout_height="160dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="24dp"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/oc_bg_home_menu">
+
+            <ImageView
+                    android:id="@+id/setting_menu_icon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/setting"/>
+
+            <TextView
+                    android:id="@+id/setting_menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_sea_setting"
+                    android:background="@drawable/oc_bg_home_menu"
+                    android:textColor="@color/text_dark"
+                    android:textSize="18sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/setting_menu_icon"
+                    android:fontFamily="@font/opensans_semibold"/>
+        </RelativeLayout>
+
     </LinearLayout>
 </RelativeLayout>

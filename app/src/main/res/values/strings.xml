@@ -12,5 +12,5 @@
     <string name="label_share_food">Share food</string>
     <string name="label_sea_challenges">Sea Challenges</string>
     <string name="label_sea_events">Sea Events</string>
-    <string name="label_sea_setting">Sea Setting</string>
+    <string name="label_sea_setting">Settings</string>
 </resources>
