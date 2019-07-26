@@ -11,7 +11,6 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import kotlinx.android.synthetic.main.activity_base_layout.*
 import kotlinx.android.synthetic.main.activity_base_layout.view.*
-import kotlinx.android.synthetic.main.activity_base_toolbar.*
 import vn.ochabot.seaconnect.R
 import vn.ochabot.seaconnect.core.App
 import vn.ochabot.seaconnect.core.Navigator
@@ -24,6 +23,11 @@ import javax.inject.Inject
  * @author linhtruong
  */
 abstract class BaseActivity : AppCompatActivity() {
+
+    companion object {
+        const val TAG = "SeaConnectLog"
+    }
+
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject

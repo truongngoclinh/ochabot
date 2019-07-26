@@ -19,6 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+
+        <activity
+                android:name=".challenges.ChallengesDetailActivity"
+                android:screenOrientation="portrait"/>
+
+
         <activity
                 android:name=".challenges.ChallengesActivity"
                 android:screenOrientation="portrait"/>
