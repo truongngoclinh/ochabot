@@ -12,6 +12,7 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        appComponent.inject(this)
         val user = User("1", "nhutlm", "Le\nMinh Nhut", "minhnhut.le@ocha.vn", "0968373869")
 
         findViewById<TextView>(R.id.user_name).text = user.fullName
@@ -25,7 +26,7 @@ class MainActivity : BaseActivity() {
         }
 
         findViewById<View>(R.id.event_menu).setOnClickListener {
-            //Todo
+            navigator.openEventsActivity(this)
         }
 
         findViewById<View>(R.id.setting_menu).setOnClickListener {

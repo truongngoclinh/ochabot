@@ -11,4 +11,6 @@
     <string name="label_sea_challenges">Sea Challenges</string>
     <string name="label_sea_events">Sea Events</string>
     <string name="label_sea_setting">Settings</string>
+    <string name="label_join">Join</string>
+    <string name="label_joined">Joined</string>
 </resources>

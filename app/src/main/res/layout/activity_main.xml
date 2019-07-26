@@ -60,13 +60,15 @@
                     android:text="@string/label_sea_lunch"/>
         </RelativeLayout>
 
-        <RelativeLayout android:layout_width="0dp"
-                        android:layout_height="240dp"
-                        android:layout_weight="1"
-                        android:layout_marginStart="24dp"
-                        android:gravity="center_vertical"
-                        android:foreground="?attr/selectableItemBackgroundBorderless"
-                        android:background="@drawable/oc_bg_home_menu">
+        <RelativeLayout
+                android:id="@+id/challenge_menu"
+                android:layout_width="0dp"
+                android:layout_height="240dp"
+                android:layout_weight="1"
+                android:layout_marginStart="24dp"
+                android:gravity="center_vertical"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:background="@drawable/oc_bg_home_menu">
 
             <ImageView
                     android:id="@+id/challenge_menu_icon"
@@ -76,7 +78,6 @@
                     android:src="@drawable/challenge"/>
 
             <TextView
-                    android:id="@+id/challenge_menu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_sea_challenges"
@@ -98,12 +99,14 @@
                   android:layout_marginTop="24dp"
                   android:layout_centerInParent="true">
 
-        <RelativeLayout android:layout_width="0dp"
-                        android:layout_height="160dp"
-                        android:layout_weight="1"
-                        android:foreground="?attr/selectableItemBackgroundBorderless"
-                        android:gravity="center_vertical"
-                        android:background="@drawable/oc_bg_home_menu">
+        <RelativeLayout
+                android:id="@+id/event_menu"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_weight="1"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center_vertical"
+                android:background="@drawable/oc_bg_home_menu">
 
             <ImageView
                     android:id="@+id/event_menu_icon"
@@ -113,7 +116,6 @@
                     android:src="@drawable/event"/>
 
             <TextView
-                    android:id="@+id/event_menu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_sea_events"
@@ -126,13 +128,15 @@
                     android:fontFamily="@font/opensans_semibold"/>
         </RelativeLayout>
 
-        <RelativeLayout android:layout_width="0dp"
-                        android:layout_height="160dp"
-                        android:layout_weight="1"
-                        android:layout_marginStart="24dp"
-                        android:foreground="?attr/selectableItemBackgroundBorderless"
-                        android:gravity="center_vertical"
-                        android:background="@drawable/oc_bg_home_menu">
+        <RelativeLayout
+                android:id="@+id/setting_menu"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_weight="1"
+                android:layout_marginStart="24dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center_vertical"
+                android:background="@drawable/oc_bg_home_menu">
 
             <ImageView
                     android:id="@+id/setting_menu_icon"
@@ -142,7 +146,6 @@
                     android:src="@drawable/setting"/>
 
             <TextView
-                    android:id="@+id/setting_menu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_sea_setting"

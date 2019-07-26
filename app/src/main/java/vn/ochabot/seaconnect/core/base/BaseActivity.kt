@@ -28,6 +28,7 @@ abstract class BaseActivity : AppCompatActivity() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject
     lateinit var navigator: Navigator
+
     private lateinit var loadingAnimation: Animation
 
     val appComponent: AppComponent by lazy(mode = LazyThreadSafetyMode.NONE) {

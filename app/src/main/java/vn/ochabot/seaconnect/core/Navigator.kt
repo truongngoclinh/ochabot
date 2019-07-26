@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import vn.ochabot.seaconnect.R
 import vn.ochabot.seaconnect.core.base.BaseActivity
+import vn.ochabot.seaconnect.event.EventsActivity
 import vn.ochabot.seaconnect.lunch.LunchActivity
 import javax.inject.Inject
 
@@ -17,6 +18,11 @@ class Navigator @Inject constructor() {
 
     fun openLunchActivity(activity: BaseActivity) {
         activity.startActivity(Intent(activity, LunchActivity::class.java))
+        activityTransitionSlide(activity)
+    }
+
+    fun openEventsActivity(activity: BaseActivity) {
+        activity.startActivity(Intent(activity, EventsActivity::class.java))
         activityTransitionSlide(activity)
     }
 }
