@@ -1,5 +1,6 @@
 package vn.ochabot.seaconnect.lunch
 
+import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -8,6 +9,7 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
 import kotlinx.android.synthetic.main.activity_ordering.*
 import kotlinx.android.synthetic.main.activity_ordering.view.lunchTitle
 import kotlinx.android.synthetic.main.activity_ordering_item.view.*
@@ -20,6 +22,7 @@ import vn.ochabot.seaconnect.core.base.extension.failure
 import vn.ochabot.seaconnect.core.base.extension.loading
 import vn.ochabot.seaconnect.core.base.extension.observe
 import vn.ochabot.seaconnect.core.extension.viewModel
+import vn.ochabot.seaconnect.core.helpers.DialogBuilder
 import java.lang.StringBuilder
 import kotlin.collections.ArrayList
 
@@ -29,8 +32,6 @@ import kotlin.collections.ArrayList
 class ShareLunchActivity : BaseActivity() {
     override fun title(): Int = R.string.label_share_lunch_activity
     override fun contentView(): Int = R.layout.activity_ordering
-    override fun enableToolbar(): Boolean = true
-    override fun enableBack(): Boolean = true
 
     private lateinit var shareLunchAdapter: ShareLunchAdapter
     private lateinit var lunchViewModel: ShareLunchViewModel
@@ -61,6 +62,7 @@ class ShareLunchActivity : BaseActivity() {
     }
 
     private fun initView() {
+        toolbarIvBack.setOnClickListener { this@ShareLunchActivity.finish() }
         lunchId = intent.getStringExtra(KEY_ID)
         if (!TextUtils.isEmpty(lunchId)) {
             val lunch = lunchViewModel.getLunchForId(lunchId)
@@ -77,7 +79,16 @@ class ShareLunchActivity : BaseActivity() {
         }
 
         shareFoodButton.setOnClickListener {
-            lunchViewModel.shareLunch(lunchId)
+            DialogBuilder(this@ShareLunchActivity)
+                    .titleText("Confirmation")
+                    .contentText("Do you want to share this meal?")
+                    .confirmText(R.string.label_ok)
+                    .rejectText(R.string.label_cancel)
+                    .onConfirmClick {
+                        lunchViewModel.shareLunch(lunchId)
+                    }
+                    .onRejectClick {  }
+                    .createDialog().showDialog()
         }
         shareLunchAdapter = ShareLunchAdapter(object : ShareLunchItemInteractor {
             override fun onItemClick(data: Lunch, pos: Int) {
@@ -85,7 +96,17 @@ class ShareLunchActivity : BaseActivity() {
                 holder?.let {
                     holder.itemView.acceptFoodButton.visibility = View.VISIBLE
                     holder.itemView.acceptFoodButton.setOnClickListener {
-                        lunchViewModel.acceptLunch(data)
+                        DialogBuilder(this@ShareLunchActivity)
+                                .titleText("Confirmation")
+                                .contentText("Do you want to accept this meal?")
+                                .confirmText(R.string.label_ok)
+                                .rejectText(R.string.label_cancel)
+                                .onConfirmClick {
+                                    lunchViewModel.acceptLunch(data)
+                                }
+                                .onRejectClick {
+                                }
+                                .createDialog().showDialog()
                     }
                 }
             }
@@ -93,7 +114,7 @@ class ShareLunchActivity : BaseActivity() {
         shareLunchList.apply {
             adapter = shareLunchAdapter
             layoutManager = LinearLayoutManager(this@ShareLunchActivity, LinearLayoutManager.VERTICAL, false)
-            addItemDecoration(VerticalSpaceItemDecoration(20))
+            addItemDecoration(VerticalSpaceItemDecoration(50))
         }
 
         lunchViewModel.getShareLunchData()
@@ -102,8 +123,29 @@ class ShareLunchActivity : BaseActivity() {
     private fun handleShareSuccess(isSuccess: Boolean?) {
         renderLoading(false)
         if (isSuccess!!) {
-            layoutYourFood.visibility = View.GONE
+            animateHideLayoutYourFood()
         }
+    }
+
+    private fun animateHideLayoutYourFood() {
+        layoutYourFood.animate()
+                .translationY(-(layoutYourFood.height + 50).toFloat())
+                .setDuration(500)
+                .setListener(object : Animator.AnimatorListener {
+                    override fun onAnimationRepeat(p0: Animator?) {
+                    }
+
+                    override fun onAnimationEnd(p0: Animator?) {
+                        layoutYourFood.visibility = View.GONE
+                    }
+
+                    override fun onAnimationCancel(p0: Animator?) {
+                    }
+
+                    override fun onAnimationStart(p0: Animator?) {
+                    }
+                }).start()
+
     }
 
     private fun handleAcceptSuccess(isSuccess: Boolean?) {
@@ -141,7 +183,7 @@ class ShareLunchActivity : BaseActivity() {
 
         if (isShared) {
             Timber.d("Shared, cant do anything")
-            layoutYourFood.visibility = View.GONE
+            animateHideLayoutYourFood()
         } else {
             if (isAccepted) {
                 Timber.d("Found accepted: %s", acceptedLunch.ref)
