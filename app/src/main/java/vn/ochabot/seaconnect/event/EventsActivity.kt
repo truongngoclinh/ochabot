@@ -1,7 +1,13 @@
 package vn.ochabot.seaconnect.event
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.provider.CalendarContract.Instances.EVENT_ID
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.content.ContextCompat
+import android.support.v4.util.Pair
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -14,6 +20,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import vn.ochabot.seaconnect.R
+import vn.ochabot.seaconnect.challenges.ChallengesDetailActivity
 import vn.ochabot.seaconnect.core.base.BaseActivity
 import vn.ochabot.seaconnect.core.helpers.UserHelper
 import vn.ochabot.seaconnect.model.Event
@@ -33,6 +40,8 @@ class EventsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        appComponent.inject(this)
         db = FirebaseFirestore.getInstance()
         events = db.collection("events")
         showEvents()
@@ -42,7 +51,8 @@ class EventsActivity : BaseActivity() {
 
         adapter.setOnItemClickListener(object : OnItemClickListener {
             override fun onItemClick(event: DocumentSnapshot) {
-                //Todo
+
+                navigator.openEventDetailActivity(this@EventsActivity, event.id)
             }
         })
 
@@ -56,16 +66,6 @@ class EventsActivity : BaseActivity() {
         })
 
 //        findViewById<View>(R.id.create_match).setOnClickListener { addEvent() }
-    }
-
-    private fun addEvent() {
-//        val data = HashMap<String, Any>()
-//        data["host"] = "thien"
-//        data["title"] = "Bi lac - tran dau dinh cao"
-//        data["timestamp"] = System.currentTimeMillis()
-//        events.document(System.nanoTime().toString()).set(data)
-//            .addOnFailureListener { e -> Log.e(TAG, "add failed.", e) }
-//            .addOnSuccessListener { Log.e(TAG, "add success") }
     }
 
     private fun showEvents() {

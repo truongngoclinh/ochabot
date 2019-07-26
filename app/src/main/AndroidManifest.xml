@@ -39,6 +39,11 @@
         <activity
                 android:name=".event.EventsActivity"
                 android:screenOrientation="portrait"/>
+
+        <activity
+                android:name=".event.EventDetailActivity"
+                android:screenOrientation="portrait"/>
+
         <activity
                 android:name=".lunch.ShareLunchActivity"
                 android:screenOrientation="portrait"/>

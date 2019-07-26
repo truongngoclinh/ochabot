@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:orientation="vertical">
+
+    <TextView android:id="@+id/event_name"
+              style="@style/sea_text_bold"
+              android:textSize="26sp"
+              tools:text="Event Name"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:id="@+id/hosted_by_label"
+              android:layout_height="wrap_content"
+              android:text="@string/label_hosted_by"
+              style="@style/sea_text_light.14"
+              android:layout_below="@id/event_name"/>
+
+    <TextView android:id="@+id/event_host"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              tools:text="Spring Gala"
+              style="@style/sea_text.16"
+              android:layout_below="@id/hosted_by_label"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:id="@+id/time_label"
+              android:layout_height="wrap_content"
+              android:text="@string/label_time"
+              style="@style/sea_text_light.14"
+              android:layout_marginTop="14dp"
+              android:layout_below="@id/event_host"/>
+
+    <TextView android:id="@+id/event_time"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              tools:text="07:30 pm, 01 Apr - 01:00 am, 02 Apr"
+              style="@style/sea_text.16"
+              android:layout_below="@id/time_label"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:id="@+id/location_label"
+              android:layout_height="wrap_content"
+              android:text="@string/label_location"
+              style="@style/sea_text_light.14"
+              android:layout_marginTop="14dp"
+              android:layout_below="@id/event_time"/>
+
+    <TextView android:id="@+id/event_location"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              tools:text="Chicago Hilton"
+              style="@style/sea_text.16"
+              android:layout_below="@id/location_label"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:id="@+id/desc_label"
+              android:layout_height="wrap_content"
+              android:text="@string/label_description"
+              style="@style/sea_text_light.14"
+              android:layout_marginTop="14dp"
+              android:layout_below="@id/event_location"/>
+
+    <TextView android:id="@+id/event_desc"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              tools:text="Chicago Hilton sdf dsf"
+              style="@style/sea_text.16"
+              android:layout_below="@id/desc_label"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:id="@+id/attendances_label"
+              android:layout_height="wrap_content"
+              android:text="@string/label_attendances"
+              style="@style/sea_text_light.14"
+              android:layout_marginTop="14dp"
+              android:layout_below="@id/event_desc"/>
+
+    <LinearLayout
+            android:id="@+id/attendances_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/attendances_label"/>
+</RelativeLayout>
