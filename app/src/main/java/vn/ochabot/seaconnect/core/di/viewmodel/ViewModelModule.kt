@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
+import vn.ochabot.seaconnect.MainViewModel
 import vn.ochabot.seaconnect.lunch.LunchViewModel
 import vn.ochabot.seaconnect.lunch.ShareLunchViewModel
 import javax.inject.Singleton
@@ -26,4 +27,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ShareLunchViewModel::class)
     abstract fun bindsShareLunchViewModel(lunchViewModel: ShareLunchViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainViewModel::class)
+    abstract fun bindsMainViewModel(viewModel: MainViewModel): ViewModel
 }

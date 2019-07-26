@@ -1,11 +1,12 @@
 <resources>
     <string name="label_app_name">Sea Connect</string>
     <string name="label_lunch_activity">Lunch</string>
-    <string name="label_order_activity">Lunch</string>
+    <string name="label_share_lunch_activity">Share Lunch</string>
     <string name="error_network_connection">Network Connection Error</string>
     <string name="label_welcome_to_app">Welcome to\nSea Connect</string>
     <string name="label_login_description">Connecting the dots</string>
     <string name="label_login_with_google">Login with Google</string>
+    <string name="label_submit">Submit</string>
     <string name="label_logout">Logout</string>
     <string name="label_sea_lunch">Sea Lunch</string>
     <string name="label_your_food">Your food</string>

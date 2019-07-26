@@ -8,7 +8,7 @@ class Lunch(
         var id: String = "",
         var title: String = "",
         var count: String = "",
-        var img: String = "",
+        var url: String = "",
         var source: String = "",
         var des: String = "",
         var ref: String = ""

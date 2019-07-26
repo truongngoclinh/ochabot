@@ -66,9 +66,22 @@ class ShareLunchViewModel
         db.collection(Lunch.DB).document(lunch.ref).update(map).addOnFailureListener {
             Timber.e("Accepted failed: %s", it)
         }.addOnSuccessListener {
-            isLunchAccepted.postValue(true)
+            updateSelectedFoodDB("truongngoclinh", lunch.id)
         }
+    }
 
+    fun updateSelectedFoodDB(user: String, id: String) {
+        var map = HashMap<String, String>()
+        map["user"] = user
+        map["meal_id"] = id
+        db.collection(Lunch.DB).document(System.nanoTime().toString()).set(map).addOnSuccessListener {
+            loadingStatus.postValue(false)
+            isLunchAccepted.postValue(true)
+        }.addOnFailureListener {
+            loadingStatus.postValue(false)
+            isLunchAccepted.postValue(true)
+            Timber.e("Update selected DB failed: " + it.localizedMessage)
+        }
     }
 
     fun getLunchForId(id: String): Lunch {

@@ -11,13 +11,14 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:scaleType="fitXY"
-        android:src="@drawable/event" />
+        android:src="@drawable/meal_0" />
 
     <TextView
         android:id="@+id/lunchTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
         android:layout_weight="1" />
 
     <Button

@@ -5,8 +5,11 @@ import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_lunch.*
 import kotlinx.android.synthetic.main.activity_lunch_item.view.*
+import kotlinx.android.synthetic.main.activity_ordering.view.*
+import timber.log.Timber
 import vn.ochabot.seaconnect.R
 import vn.ochabot.seaconnect.core.GridDividerItemDecoration
 import vn.ochabot.seaconnect.core.ItemInteractor
@@ -50,11 +53,11 @@ class LunchActivity : BaseActivity() {
         lunchList.apply {
             adapter = lunchAdapter
             layoutManager = GridLayoutManager(this@LunchActivity, SPAN_COUNT)
-            addItemDecoration(GridDividerItemDecoration(SPAN_COUNT, 40))
+            addItemDecoration(GridDividerItemDecoration(SPAN_COUNT, 100))
         }
 
         submitButton.setOnClickListener {
-            navigator.openOrderActivity(this@LunchActivity, "0")
+            navigator.openShareLunchActivity(this@LunchActivity, "0")
         }
 
         lunchViewModel.getLunchData()
@@ -62,25 +65,33 @@ class LunchActivity : BaseActivity() {
 
     private fun loadData(data: ArrayList<Lunch>?) {
         renderLoading(false)
-        lunchAdapter.data = data!!
+        lunchAdapter.add(data!!)
     }
 
     class LunchAdapter constructor(private val listener: ItemInteractor<Lunch>) :
-            BaseRecyclerAdapter<Lunch, LunchAdapter.LunchHolder>() {
+        BaseRecyclerAdapter<Lunch, LunchAdapter.LunchHolder>() {
         override fun createHolder(parent: ViewGroup, viewType: Int): LunchHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_lunch_item, parent, false)
             return LunchHolder(view, listener)
         }
 
         inner class LunchHolder(itemView: View, listener: ItemInteractor<Lunch>) :
-                BaseRecyclerAdapter.ViewHolder<Lunch>(itemView) {
+            BaseRecyclerAdapter.ViewHolder<Lunch>(itemView) {
             init {
                 itemView.setOnClickListener { listener.onItemClick(data[adapterPosition]) }
             }
 
             override fun bindData(data: Lunch, position: Int) {
                 itemView.apply {
+                    Timber.d("title: " + data.title + " - url: " + data.url)
                     title.text = data.title
+                    thumbnail.setImageResource(
+                        context.resources.getIdentifier(
+                            data.url,
+                            "drawable",
+                            context.packageName
+                        )
+                    )
                 }
             }
         }

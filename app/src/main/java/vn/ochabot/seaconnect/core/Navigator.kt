@@ -21,7 +21,7 @@ class Navigator @Inject constructor() {
         activityTransitionSlide(activity)
     }
 
-    fun openOrderActivity(activity: BaseActivity, id: String) {
+    fun openShareLunchActivity(activity: BaseActivity, id: String) {
         activity.startActivity(ShareLunchActivity.forActivity(activity, id))
         activityTransitionSlide(activity)
     }
