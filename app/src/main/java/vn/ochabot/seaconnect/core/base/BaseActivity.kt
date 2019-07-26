@@ -30,9 +30,9 @@ abstract class BaseActivity : AppCompatActivity() {
     lateinit var navigator: Navigator
     private lateinit var loadingAnimation: Animation
 
-//    val appComponent: AppComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
-//        (application as App).appComponent
-//    }
+    val appComponent: AppComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
+        (application as App).appComponent
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +40,10 @@ abstract class BaseActivity : AppCompatActivity() {
         initView(savedInstanceState)
         initToolbar()
         initLoading()
+        onCreateView(savedInstanceState)
+    }
+
+    open fun onCreateView(savedInstanceState: Bundle?) {
     }
 
     open fun initView(savedInstanceState: Bundle?) {
@@ -67,8 +71,8 @@ abstract class BaseActivity : AppCompatActivity() {
             status?.let { isLoading ->
                 if (isLoading) {
                     this.window.setFlags(
-                        WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                        WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+                            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
                     )
                     this.loadingSpinner.visibility = View.VISIBLE
                     this.loadingSpinner.startAnimation(loadingAnimation)
