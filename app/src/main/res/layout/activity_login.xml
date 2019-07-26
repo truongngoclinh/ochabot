@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:padding="24dp"
+                android:layout_height="match_parent">
+
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+               android:src="@drawable/icon_sea"
+               android:layout_above="@id/app_name_container"
+               android:layout_marginBottom="60dp"/>
+
+    <LinearLayout
+            android:id="@+id/app_name_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/text_dark_70"
+                android:text="@string/label_welcome_to_app"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:textSize="20sp"
+                android:textColor="@color/text_dark_70"
+                android:text="@string/label_login_description"
+                android:layout_marginTop="40dp"/>
+
+    </LinearLayout>
+
+    <TextView android:id="@+id/login_btn"
+              android:layout_width="match_parent"
+              android:layout_height="60dp"
+              android:layout_alignParentBottom="true"
+              android:layout_marginBottom="40dp"
+              android:text="@string/label_login_with_google"
+              android:textColor="@color/white"
+              android:gravity="center"
+              android:fontFamily="@font/roboto_medium"
+              android:textSize="18sp"
+              android:background="@drawable/oc_bg_btn_login"
+    />
+</RelativeLayout>
