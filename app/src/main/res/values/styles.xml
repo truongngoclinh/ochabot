@@ -1,4 +1,5 @@
 <resources>
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary</item>
@@ -6,5 +7,10 @@
         <item name="android:statusBarColor">@color/primary</item>
     </style>
 
+    <style name="primary_action_button" parent="AppTheme">
+        <item name="android:background">@drawable/btn_primary_bg_large</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 
 </resources>

@@ -17,15 +17,15 @@ class LunchViewModel
 
     fun getLunchData() {
         loadingStatus.postValue(true)
-        val json = ResourcesHelper.fromAsset(Lunch::class.java, "meals.json")
+
+        val json = ResourcesHelper.getAsset("meals.json")
         val typeToken = object : TypeToken<List<Lunch>>() {}.type
 
         lunchData.postValue(Gson().fromJson<ArrayList<Lunch>>(json, typeToken))
     }
 
     fun getShareLunchData() {
-        loadingStatus.postValue(true)
-        val json = ResourcesHelper.fromAsset(Lunch::class.java, "meals.json")
+        val json = ResourcesHelper.getAsset("meals.json")
         val typeToken = object : TypeToken<List<Lunch>>() {}.type
 
         shareLunchData.postValue(Gson().fromJson<ArrayList<Lunch>>(json, typeToken))

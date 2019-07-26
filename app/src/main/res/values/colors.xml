@@ -12,4 +12,8 @@
     <color name="bg_btn_login_pressed">#BB2F2F</color>
     <color name="text_blue_color">#37A7FF</color>
     <color name="bg_menu_cell">#F8FAFC</color>
+    <color name="primary_button_disabled">#40488cf1</color>
+    <color name="primary_button_normal">#488cf1</color>
+    <color name="app_primary_color_highlight">#80488CF1</color>
+
 </resources>

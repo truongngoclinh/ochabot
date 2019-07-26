@@ -2,13 +2,13 @@ package vn.ochabot.seaconnect.lunch
 
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.activity_lunch.*
 import kotlinx.android.synthetic.main.activity_lunch_item.view.*
 import vn.ochabot.seaconnect.R
+import vn.ochabot.seaconnect.core.GridDividerItemDecoration
 import vn.ochabot.seaconnect.core.ItemInteractor
 import vn.ochabot.seaconnect.core.base.BaseActivity
 import vn.ochabot.seaconnect.core.base.BaseRecyclerAdapter
@@ -24,9 +24,12 @@ import vn.ochabot.seaconnect.core.extension.viewModel
 class LunchActivity : BaseActivity() {
     override fun title(): Int = R.string.label_lunch_activity
     override fun contentView(): Int = R.layout.activity_lunch
+    override fun enableToolbar(): Boolean = true
+    override fun enableBack(): Boolean = true
 
     private lateinit var lunchAdapter: LunchAdapter
     private lateinit var lunchViewModel: LunchViewModel
+    private val SPAN_COUNT = 2
 
     override fun onCreateView(savedInstanceState: Bundle?) {
         appComponent.inject(this)
@@ -41,14 +44,15 @@ class LunchActivity : BaseActivity() {
 
     private fun initList() {
         lunchAdapter = LunchAdapter(object : ItemInteractor<Lunch> {
-
             override fun onItemClick(data: Lunch) {
             }
         })
         lunchList.apply {
             adapter = lunchAdapter
-            layoutManager = GridLayoutManager(this@LunchActivity, 2)
+            layoutManager = GridLayoutManager(this@LunchActivity, SPAN_COUNT)
+            addItemDecoration(GridDividerItemDecoration(SPAN_COUNT, 40))
         }
+
         lunchViewModel.getLunchData()
     }
 

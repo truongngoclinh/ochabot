@@ -8,6 +8,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/label_app_name"
         android:roundIcon="@drawable/icon_sea"
+        android:name=".core.App"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity">
@@ -28,5 +29,4 @@
             android:name=".lunch.OrderingActivity"
             android:screenOrientation="portrait" />
     </application>
-
 </manifest>

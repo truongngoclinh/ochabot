@@ -38,8 +38,19 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         initView(savedInstanceState)
+        if (enableToolbar()) {
+            initToolbar()
+        }
         initLoading()
         onCreateView(savedInstanceState)
+    }
+
+    private fun initToolbar() {
+        appbar.visibility = View.VISIBLE
+        toolbarTitle.text = getString(title())
+        toolbarBack.setOnClickListener { onBackPressed() }
+
+        if (enableBack()) toolbarBack.visibility = View.VISIBLE
     }
 
     open fun onCreateView(savedInstanceState: Bundle?) {
@@ -100,6 +111,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     open fun enableBack() = false
+    open fun enableToolbar() = false
     abstract fun contentView(): Int
     abstract fun title(): Int
 }
