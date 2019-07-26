@@ -22,6 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import vn.ochabot.seaconnect.R;
 import vn.ochabot.seaconnect.core.base.BaseActivity;
 import vn.ochabot.seaconnect.core.helpers.UserHelper;
+import vn.ochabot.seaconnect.core.helpers.VerticalSpaceItemDecoration;
 
 import java.util.*;
 
@@ -48,6 +49,7 @@ public class ChallengesActivity extends BaseActivity {
         });
         recyclerView = findViewById(R.id.match_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration((int) (getResources().getDisplayMetrics().density * 8)));
         recyclerView.setAdapter(adapter);
         showMatches();
     }
@@ -75,7 +77,7 @@ public class ChallengesActivity extends BaseActivity {
     }
 
     private void showMatches() {
-        matches.addSnapshotListener(new EventListener<QuerySnapshot>() {
+        matches.whereGreaterThan(Match.MATCH_STATUS, Match.STATUS_CANCELED).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@javax.annotation.Nullable QuerySnapshot values, @javax.annotation.Nullable FirebaseFirestoreException e) {
                 if (e != null) {

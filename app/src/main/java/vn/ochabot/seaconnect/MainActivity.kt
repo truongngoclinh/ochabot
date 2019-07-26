@@ -21,7 +21,7 @@ class MainActivity : BaseActivity() {
         }
 
         findViewById<View>(R.id.challenge_menu).setOnClickListener {
-            //Todo
+            navigator.openChallengesActivity(this)
         }
 
         findViewById<View>(R.id.event_menu).setOnClickListener {
