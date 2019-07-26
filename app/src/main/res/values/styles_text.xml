@@ -21,4 +21,85 @@
     <style name="RobotoM.18">
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="sea_text">
+        <item name="android:fontFamily">@font/opensans_regular</item>
+    </style>
+
+    <style name="sea_text.12">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="sea_text.14">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="sea_text.16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="sea_text.18">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="sea_text_semibold">
+        <item name="android:fontFamily">@font/opensans_semibold</item>
+    </style>
+
+    <style name="sea_text_semibold.12">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="sea_text_semibold.14">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="sea_text_semibold.16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="sea_text_semibold.18">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="sea_text_light">
+        <item name="android:fontFamily">@font/opensans_light</item>
+    </style>
+
+    <style name="sea_text_light.12">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="sea_text_light.14">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="sea_text_light.16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="sea_text_light.18">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="sea_text_bold">
+        <item name="android:fontFamily">@font/opensans_bold</item>
+    </style>
+
+    <style name="sea_text_bold.12">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="sea_text_bold.14">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="sea_text_bold.16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="sea_text_bold.18">
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>

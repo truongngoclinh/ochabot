@@ -1,6 +1,7 @@
 package vn.ochabot.seaconnect.core
 
 import android.app.Application
+import timber.log.Timber
 import vn.ochabot.seaconnect.BuildConfig
 import vn.ochabot.seaconnect.core.di.AppComponent
 
@@ -9,9 +10,9 @@ import vn.ochabot.seaconnect.core.di.AppComponent
  * @author linhtruong
  */
 class App : Application() {
-//    val appComponent: AppComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
-//        AppComponent.init(this)
-//    }
+    val appComponent: AppComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
+        AppComponent.init(this)
+    }
 
     companion object {
         lateinit var appContext: App
@@ -25,12 +26,12 @@ class App : Application() {
 
     private fun initUtils() {
         if (BuildConfig.DEBUG) {
-//            Timber.plant(Timber.DebugTree())
+            Timber.plant(Timber.DebugTree())
         }
     }
 
     private fun initAppComponent() {
-//        appComponent.inject(this)
+        appComponent.inject(this)
         appContext = this
     }
 }

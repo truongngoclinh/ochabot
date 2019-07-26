@@ -4,6 +4,7 @@ import android.app.Application
 import com.google.gson.Gson
 import dagger.Component
 import vn.ochabot.seaconnect.core.App
+import vn.ochabot.seaconnect.core.base.BaseActivity
 import vn.ochabot.seaconnect.core.di.module.AppModule
 import vn.ochabot.seaconnect.core.di.module.RepositoryModule
 import vn.ochabot.seaconnect.core.di.viewmodel.ViewModelModule
@@ -21,8 +22,9 @@ interface AppComponent {
         }
     }
 
-//    fun application(): Application
-//    fun gson(): Gson
+    fun application(): Application
+    fun gson(): Gson
 
-//    fun inject(app: App)
+    fun inject(app: App)
+    fun inject(activity: BaseActivity)
 }

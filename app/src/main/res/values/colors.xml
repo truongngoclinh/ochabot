@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#EEEEEE</color>
-    <color name="white">#EEEEEE</color>
+    <color name="primary">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="divider">#42090E2B</color>
-    <color name="text_dark">#4F5664</color>
+    <color name="text_dark">#565996</color>
     <color name="text_dark_70">#b24f5664</color>
     <color name="text_dark_30">#4D4F5664</color>
     <color name="text_dark_40">#664f5664</color>
-    <color name="bg_btn_login">#EF3024</color>
-    <color name="bg_btn_login_pressed">#BB2F2F</color>
-    <color name="text_blue_color">#37A7FF</color>
+    <color name="bg_btn_login">#37A7FF</color>
+    <color name="bg_btn_login_pressed">#2196F3</color>
     <color name="bg_menu_cell">#F8FAFC</color>
+    <color name="bg_menu_cell_pressed">#664f5664</color>
+
 </resources>

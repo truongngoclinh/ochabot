@@ -1,5 +1,7 @@
 <resources>
     <string name="label_app_name">Sea Connect</string>
+    <string name="label_lunch_activity">Lunch</string>
+    <string name="label_order_activity">Lunch</string>
     <string name="error_network_connection">Network Connection Error</string>
     <string name="label_welcome_to_app">Welcome to\nSea Connect</string>
     <string name="label_login_description">Connecting the dots</string>
@@ -8,5 +10,5 @@
     <string name="label_sea_lunch">Sea Lunch</string>
     <string name="label_sea_challenges">Sea Challenges</string>
     <string name="label_sea_events">Sea Events</string>
-    <string name="label_sea_setting">Sea Setting</string>
+    <string name="label_sea_setting">Settings</string>
 </resources>
