@@ -25,7 +25,7 @@ import kotlin.collections.ArrayList
  * @author linhtruong
  */
 class ShareLunchActivity : BaseActivity() {
-    override fun title(): Int = R.string.label_order_activity
+    override fun title(): Int = R.string.label_share_lunch_activity
     override fun contentView(): Int = R.layout.activity_ordering
     override fun enableToolbar(): Boolean = true
     override fun enableBack(): Boolean = true
@@ -60,8 +60,19 @@ class ShareLunchActivity : BaseActivity() {
 
     private fun initView() {
         lunchId = intent.getStringExtra(KEY_ID)
-        val lunch = lunchViewModel.getLunchForId(lunchId)
-        lunchTitle.text = lunch.title
+        if (!TextUtils.isEmpty(lunchId)) {
+            val lunch = lunchViewModel.getLunchForId(lunchId)
+            lunchTitle.text = lunch.title
+            if (!TextUtils.isEmpty(lunch.url)) {
+                lunchImg.setImageResource(
+                        this.resources.getIdentifier(
+                                lunch.url,
+                                "drawable",
+                                this.packageName
+                        )
+                )
+            }
+        }
 
         shareFoodButton.setOnClickListener {
             lunchViewModel.shareLunch(lunchId)
@@ -72,7 +83,7 @@ class ShareLunchActivity : BaseActivity() {
                 holder?.let {
                     holder.itemView.acceptFoodButton.visibility = View.VISIBLE
                     holder.itemView.acceptFoodButton.setOnClickListener {
-                        lunchViewModel.acceptLunch(lunch)
+                        lunchViewModel.acceptLunch(data)
                     }
                 }
             }
@@ -133,17 +144,34 @@ class ShareLunchActivity : BaseActivity() {
                 Timber.d("Found accepted: %s", acceptedLunch.ref)
                 layoutYourFood.visibility = View.VISIBLE
                 lunchTitle.text = acceptedLunch.title
+                if (!TextUtils.isEmpty(acceptedLunch.url)) {
+                    lunchImg.setImageResource(
+                            this.resources.getIdentifier(
+                                    acceptedLunch.url,
+                                    "drawable",
+                                    this.packageName
+                            )
+                    )
+                }
+                shareLunchAdapter = ShareLunchAdapter(object : ShareLunchItemInteractor {
+                    override fun onItemClick(data: Lunch, pos: Int) {
+                    }
+                })
+                shareLunchList.adapter = shareLunchAdapter
+                shareLunchAdapter.add(dataToLoad)
             }
         }
     }
 
-    class ShareLunchAdapter constructor(private val listener: ShareLunchItemInteractor) : BaseRecyclerAdapter<Lunch, ShareLunchAdapter.ShareLunchHolder>() {
+    class ShareLunchAdapter constructor(private val listener: ShareLunchItemInteractor) :
+            BaseRecyclerAdapter<Lunch, ShareLunchAdapter.ShareLunchHolder>() {
         override fun createHolder(parent: ViewGroup, viewType: Int): ShareLunchHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_ordering_item, parent, false)
             return ShareLunchHolder(view, listener)
         }
 
-        inner class ShareLunchHolder(itemView: View, listener: ShareLunchItemInteractor) : BaseRecyclerAdapter.ViewHolder<Lunch>(itemView) {
+        inner class ShareLunchHolder(itemView: View, listener: ShareLunchItemInteractor) :
+                BaseRecyclerAdapter.ViewHolder<Lunch>(itemView) {
             init {
                 itemView.setOnClickListener { listener.onItemClick(data[adapterPosition], adapterPosition) }
             }
@@ -151,6 +179,15 @@ class ShareLunchActivity : BaseActivity() {
             override fun bindData(data: Lunch, position: Int) {
                 itemView.apply {
                     lunchTitle.text = constructTitle(data)
+                    if (!TextUtils.isEmpty(data.url)) {
+                        lunchImg.setImageResource(
+                                context.resources.getIdentifier(
+                                        data.url,
+                                        "drawable",
+                                        context.packageName
+                                )
+                        )
+                    }
                 }
             }
 

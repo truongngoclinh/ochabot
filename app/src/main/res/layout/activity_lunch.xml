@@ -8,23 +8,22 @@
         android:id="@+id/lunchList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/submitLayout" />
+        android:layout_above="@+id/submitButton"
+        android:layout_margin="26dp" />
 
-    <LinearLayout
-        android:id="@+id/submitLayout"
+    <TextView
+        android:id="@+id/submitButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/btn_layout_bg"
-        android:orientation="horizontal">
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:background="@drawable/oc_bg_btn_login"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="@string/label_submit"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/submitButton"
-            style="@style/primary_action_button"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:text="Submit"
-            android:textAlignment="center" />
-    </LinearLayout>
 </RelativeLayout>
