@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Event(
     @SerializedName("comments")
-    var comments: ArrayList<Comment> = ArrayList(),
+    var comments: ArrayList<String> = ArrayList(),
     @SerializedName("desc")
     var desc: String = "",
     @SerializedName("host")
