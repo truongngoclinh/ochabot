@@ -24,6 +24,7 @@
 
     <style name="sea_text">
         <item name="android:fontFamily">@font/opensans_regular</item>
+        <item name="android:textColor">@color/text_dark</item>
     </style>
 
     <style name="sea_text.12">
@@ -44,6 +45,7 @@
 
     <style name="sea_text_semibold">
         <item name="android:fontFamily">@font/opensans_semibold</item>
+        <item name="android:textColor">@color/text_dark</item>
     </style>
 
     <style name="sea_text_semibold.12">
@@ -64,6 +66,7 @@
 
     <style name="sea_text_light">
         <item name="android:fontFamily">@font/opensans_light</item>
+        <item name="android:textColor">@color/text_dark</item>
     </style>
 
     <style name="sea_text_light.12">
@@ -84,6 +87,7 @@
 
     <style name="sea_text_bold">
         <item name="android:fontFamily">@font/opensans_bold</item>
+        <item name="android:textColor">@color/text_dark</item>
     </style>
 
     <style name="sea_text_bold.12">

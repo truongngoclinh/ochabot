@@ -7,7 +7,7 @@ import vn.ochabot.seaconnect.core.base.BaseActivity
 import vn.ochabot.seaconnect.core.base.extension.loading
 import vn.ochabot.seaconnect.core.base.extension.observe
 import vn.ochabot.seaconnect.core.extension.viewModel
-import vn.ochabot.seaconnect.model.User
+import vn.ochabot.seaconnect.core.helpers.UserHelper
 
 class MainActivity : BaseActivity() {
     override fun title(): Int = R.string.label_app_name
@@ -25,16 +25,14 @@ class MainActivity : BaseActivity() {
         }
         viewModel.getCurrentSelectedFoodIfAny()
 
-        val user = User("1", "nhutlm", "Le\nMinh Nhut", "minhnhut.le@ocha.vn", "0968373869")
-        user_name.text = user.fullName
+        user_name.text = UserHelper.getUserName()
         challenge_menu.setOnClickListener {
-
+            navigator.openChallengesActivity(this)
         }
         event_menu.setOnClickListener {
-
+            navigator.openEventsActivity(this)
         }
         setting_menu.setOnClickListener {
-
         }
         logout_btn.setOnClickListener {
             finish()
