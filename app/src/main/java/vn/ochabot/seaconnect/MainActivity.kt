@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import vn.ochabot.seaconnect.core.base.BaseActivity
-import vn.ochabot.seaconnect.model.User
+import vn.ochabot.seaconnect.core.helpers.UserHelper
 
 class MainActivity : BaseActivity() {
     override fun title(): Int = R.string.label_app_name
@@ -13,9 +13,8 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         appComponent.inject(this)
-        val user = User("1", "nhutlm", "Le\nMinh Nhut", "minhnhut.le@ocha.vn", "0968373869")
 
-        findViewById<TextView>(R.id.user_name).text = user.fullName
+        findViewById<TextView>(R.id.user_name).text = UserHelper.getUserName()
 
         findViewById<View>(R.id.lunch_menu).setOnClickListener {
             navigator.openLunchActivity(this)

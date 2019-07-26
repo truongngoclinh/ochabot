@@ -6,6 +6,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import vn.ochabot.seaconnect.lunch.LunchViewModel
+import vn.ochabot.seaconnect.lunch.ShareLunchViewModel
 import javax.inject.Singleton
 
 /**
@@ -18,7 +19,11 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @Singleton
     @ViewModelKey(LunchViewModel::class)
     abstract fun bindsLunchViewModel(lunchViewModel: LunchViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ShareLunchViewModel::class)
+    abstract fun bindsShareLunchViewModel(lunchViewModel: ShareLunchViewModel): ViewModel
 }

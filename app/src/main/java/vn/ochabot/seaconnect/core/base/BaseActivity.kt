@@ -24,6 +24,11 @@ import javax.inject.Inject
  * @author linhtruong
  */
 abstract class BaseActivity : AppCompatActivity() {
+
+    companion object {
+        const val TAG = "SeaConnectLog"
+    }
+
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject

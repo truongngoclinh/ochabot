@@ -2,6 +2,7 @@ package vn.ochabot.seaconnect.event
 
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,7 +15,7 @@ import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import vn.ochabot.seaconnect.R
 import vn.ochabot.seaconnect.core.base.BaseActivity
-import vn.ochabot.seaconnect.model.Comment
+import vn.ochabot.seaconnect.core.helpers.UserHelper
 import vn.ochabot.seaconnect.model.Event
 import java.text.SimpleDateFormat
 import java.util.*
@@ -27,26 +28,29 @@ class EventsActivity : BaseActivity() {
 
     private lateinit var db: FirebaseFirestore
     private lateinit var events: CollectionReference
-    private var mData: MutableMap<String, Event> = HashMap()
     private var adapter = EventAdapter()
+    lateinit var recyclerView: RecyclerView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         db = FirebaseFirestore.getInstance()
-        events = db.collection("host")
+        events = db.collection("events")
         showEvents()
+        recyclerView = findViewById(R.id.event_list)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
 //        findViewById<View>(R.id.create_match).setOnClickListener { addEvent() }
     }
 
     private fun addEvent() {
-        val data = HashMap<String, Any>()
-        data["host"] = "thien"
-        data["title"] = "Bi lac - tran dau dinh cao"
-        data["timestamp"] = System.currentTimeMillis()
-        events.document(System.nanoTime().toString()).set(data)
-            .addOnFailureListener { e -> Log.e(TAG, "add failed.", e) }
-            .addOnSuccessListener { Log.e(TAG, "add success") }
+//        val data = HashMap<String, Any>()
+//        data["host"] = "thien"
+//        data["title"] = "Bi lac - tran dau dinh cao"
+//        data["timestamp"] = System.currentTimeMillis()
+//        events.document(System.nanoTime().toString()).set(data)
+//            .addOnFailureListener { e -> Log.e(TAG, "add failed.", e) }
+//            .addOnSuccessListener { Log.e(TAG, "add success") }
     }
 
     private fun showEvents() {
@@ -56,14 +60,14 @@ class EventsActivity : BaseActivity() {
                 return@EventListener
             }
 
+            adapter.mData.clear()
             for (doc in values!!) {
-                mData[doc.id] = convertData(doc)
+                adapter.mData.add(convertData(doc))
                 Log.d(TAG, doc.toString())
             }
-            adapter.mData = ArrayList(mData.values)
-            Collections.sort(adapter.mData) { d1, d2 ->
+            adapter.mData.sortWith(Comparator { d1, d2 ->
                 (d1.time - d2.time).toInt()
-            }
+            })
             adapter.notifyDataSetChanged()
         })
     }
@@ -91,10 +95,10 @@ class EventsActivity : BaseActivity() {
 
     class EventAdapter : RecyclerView.Adapter<EventAdapter.MyViewHolder>() {
 
-        internal var mData: List<Event>? = null
+        var mData = ArrayList<Event>()
 
         override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): MyViewHolder {
-            val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.activity_lunch_item, viewGroup, false)
+            val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.view_event_item, viewGroup, false)
 
             return MyViewHolder(view)
         }
@@ -114,7 +118,7 @@ class EventsActivity : BaseActivity() {
                 viewHolder.memberNum.text = it.members.size.toString()
                 var joined = false
                 it.members.forEach { member ->
-                    if (member.equals("Le Minh Nhut")) {
+                    if (member.equals(UserHelper.getUserName())) {
                         joined = true
                         return@forEach
                     }

@@ -6,6 +6,7 @@
                 android:layout_margin="24dp"
                 android:padding="14dp"
                 android:background="@drawable/oc_bg_event_item"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true">
 
     <TextView
@@ -77,7 +78,7 @@
     <TextView
             android:id="@+id/event_host"
             android:layout_width="0dp"
-            style="@style/sea_text.16"
+            style="@style/sea_text_bold.16"
             android:layout_marginTop="30dp"
             android:singleLine="true"
             android:ellipsize="end"

@@ -6,6 +6,7 @@ import vn.ochabot.seaconnect.R
 import vn.ochabot.seaconnect.core.base.BaseActivity
 import vn.ochabot.seaconnect.event.EventsActivity
 import vn.ochabot.seaconnect.lunch.LunchActivity
+import vn.ochabot.seaconnect.lunch.ShareLunchActivity
 import javax.inject.Inject
 
 /**
@@ -23,6 +24,11 @@ class Navigator @Inject constructor() {
 
     fun openEventsActivity(activity: BaseActivity) {
         activity.startActivity(Intent(activity, EventsActivity::class.java))
+        activityTransitionSlide(activity)
+    }
+
+    fun openOrderActivity(activity: BaseActivity, id: String) {
+        activity.startActivity(ShareLunchActivity.forActivity(activity, id))
         activityTransitionSlide(activity)
     }
 }
