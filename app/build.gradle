@@ -83,6 +83,7 @@ dependencies {
     implementation appDeps.timber
     implementation appDeps.rxJava
     implementation appDeps.rxAndroid
+    implementation "com.android.support.constraint:constraint-layout:1.1.0"
 //    implementation appDeps.glide
 //
 //    testImplementation unitTestDeps.junit
@@ -99,6 +100,7 @@ dependencies {
 //    debugImplementation devDeps.leakCanary
 //    releaseImplementation devDeps.leakCanaryNoop
 //    testImplementation devDeps.leakCanaryNoop
+
 }
 
 configurations.all {

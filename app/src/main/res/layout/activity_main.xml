@@ -1,10 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp"
-    android:baselineAligned="false"
-    android:orientation="horizontal">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:padding="24dp"
+                android:background="@color/white">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:id="@+id/logout_btn"
+              android:fontFamily="@font/roboto_medium"
+              android:layout_alignParentEnd="true"
+              android:textColor="@color/text_blue_color"
+              android:textSize="18sp"
+              android:layout_marginTop="14dp"
+              android:layout_marginEnd="14dp"
+              android:text="@string/label_logout"/>
 
-</LinearLayout>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:id="@+id/user_name"
+              android:layout_below="@id/logout_btn"
+              android:layout_marginTop="10dp"
+              android:text="Le Minh Nhut"
+              android:textSize="30sp"
+              android:fontFamily="@font/roboto_medium"
+              android:textColor="@color/text_dark_70"
+    />
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/oc_menu_group_1"
+                  android:layout_below="@id/user_name"
+                  android:layout_marginTop="60dp"
+    >
+        <TextView
+                android:id="@+id/lunch_menu"
+                android:layout_width="0dp"
+                android:layout_weight="1" android:layout_height="300dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.5"
+                android:text="@string/label_sea_lunch"
+                android:background="@drawable/oc_bg_home_menu"
+                android:gravity="center"
+        />
+        <TextView
+                android:id="@+id/challenge_menu"
+                android:layout_width="0dp" android:layout_height="300dp"
+                android:layout_weight="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.5"
+                android:layout_marginStart="24dp"
+                android:gravity="center"
+                android:text="@string/label_sea_challenges"
+                android:background="@drawable/oc_bg_home_menu"
+        />
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_below="@id/oc_menu_group_1"
+                  android:layout_height="wrap_content"
+                  android:layout_centerInParent="true">
+        <TextView
+                android:id="@+id/event_menu"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="150dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.5"
+                android:text="@string/label_sea_events"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/oc_bg_home_menu"
+                android:gravity="center"
+        />
+        <TextView
+                android:id="@+id/setting_menu"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="150dp"
+                android:text="@string/label_sea_setting"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:background="@drawable/oc_bg_home_menu"
+        />
+    </LinearLayout>
+</RelativeLayout>

@@ -38,7 +38,6 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         initView(savedInstanceState)
-        initToolbar()
         initLoading()
     }
 
@@ -49,19 +48,12 @@ abstract class BaseActivity : AppCompatActivity() {
         setContentView(view)
     }
 
-    private fun initToolbar() {
-        toolbarTitle.text = getString(title())
-        toolbarBack.setOnClickListener { onBackPressed() }
-
-        if (enableBack()) toolbarBack.visibility = View.VISIBLE
-    }
-
     // handle loading spinner
     private fun initLoading() {
         loadingAnimation = AnimationUtils.loadAnimation(this, R.anim.anim_loading_spinner)
     }
 
-    private fun hideLoading() = renderLoading(false)
+    open fun hideLoading() = renderLoading(false)
     open fun renderLoading(status: Boolean?) {
         with(this) {
             status?.let { isLoading ->
