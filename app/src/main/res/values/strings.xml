@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Sea Connect</string>
+    <string name="label_app_name">Sea Connect</string>
+    <string name="error_network_connection">Network Connection Error</string>
 </resources>
