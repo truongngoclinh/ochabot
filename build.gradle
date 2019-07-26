@@ -10,7 +10,7 @@ buildscript {
     ext.target_sdk = 28
     ext.min_sdk = 21
 
-    ext.application_id = 'news.agoda.com.sample'
+    ext.application_id = 'samples.linhtruong.com.app'
     ext.version_name = '1.0'
     ext.version_code = 1
 
@@ -19,8 +19,9 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.android.tools.build:gradle:3.4.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.0'
     }
 }
 
