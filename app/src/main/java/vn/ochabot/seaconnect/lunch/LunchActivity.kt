@@ -32,6 +32,7 @@ class LunchActivity : BaseActivity() {
 
     private lateinit var lunchAdapter: LunchAdapter
     private lateinit var lunchViewModel: LunchViewModel
+    private var selectedPos = 0
     private val SPAN_COUNT = 2
 
     override fun onCreateView(savedInstanceState: Bundle?) {
@@ -47,7 +48,10 @@ class LunchActivity : BaseActivity() {
 
     private fun initView() {
         lunchAdapter = LunchAdapter(object : ItemInteractor<Lunch> {
-            override fun onItemClick(data: Lunch) {
+            override fun onItemClick(data: Lunch, pos: Int) {
+                selectedPos = pos
+                val viewHolder = lunchList.findViewHolderForAdapterPosition(pos)
+                viewHolder!!.itemView.root.background = this@LunchActivity.getDrawable(R.drawable.btn_select_green)
             }
         })
         lunchList.apply {
@@ -57,7 +61,7 @@ class LunchActivity : BaseActivity() {
         }
 
         submitButton.setOnClickListener {
-            navigator.openShareLunchActivity(this@LunchActivity, "0")
+            navigator.openShareLunchActivity(this@LunchActivity, selectedPos.toString())
         }
 
         lunchViewModel.getLunchData()
@@ -78,7 +82,7 @@ class LunchActivity : BaseActivity() {
         inner class LunchHolder(itemView: View, listener: ItemInteractor<Lunch>) :
             BaseRecyclerAdapter.ViewHolder<Lunch>(itemView) {
             init {
-                itemView.setOnClickListener { listener.onItemClick(data[adapterPosition]) }
+                itemView.setOnClickListener { listener.onItemClick(data[adapterPosition], adapterPosition) }
             }
 
             override fun bindData(data: Lunch, position: Int) {

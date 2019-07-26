@@ -4,5 +4,5 @@ package vn.ochabot.seaconnect.core
  * @author linhtruong
  */
 interface ItemInteractor<T> {
-    fun onItemClick(data: T)
+    fun onItemClick(data: T, pos: Int)
 }

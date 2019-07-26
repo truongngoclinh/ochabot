@@ -13,5 +13,9 @@
     <color name="primary_button_disabled">#40488cf1</color>
     <color name="primary_button_normal">#0074df</color>
     <color name="app_primary_color_highlight">#2196F3</color>
+    <color name="green">#27CB7A</color>
+    <color name="grey_light">#bcc6cb</color>
+    <color name="transparent">#00000000</color>
+    <color name="select_button_pressed">#33dfe8f5</color>
 
 </resources>
