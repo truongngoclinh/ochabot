@@ -129,7 +129,12 @@ public class ChallengesDetailActivity extends BaseActivity {
                 }
             }
         });
-
+        findViewById(R.id.ic_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         matchHost = findViewById(R.id.match_host);
         matchTitle = findViewById(R.id.match_title);
 
@@ -155,11 +160,11 @@ public class ChallengesDetailActivity extends BaseActivity {
 
         matchSnapShot = documentSnapshot;
 
-        for (int i = team1ViewGroup.getChildCount() - 1; i > 1; i--) {
+        for (int i = team1ViewGroup.getChildCount() - 1; i > 0; i--) {
             team1ViewGroup.removeViewAt(i);
         }
 
-        for (int i = team2ViewGroup.getChildCount() - 1; i > 1; i--) {
+        for (int i = team2ViewGroup.getChildCount() - 1; i > 0; i--) {
             team2ViewGroup.removeViewAt(i);
         }
 

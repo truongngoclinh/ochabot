@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:orientation="vertical"
+             android:background="#ffffff"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+                android:id="@+id/ic_back"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="12dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/ic_nav_back"/>
+
+
+        <TextView
+                android:id="@+id/title_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/text_dark"
+                android:text="New Challenges"/>
+
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/match_host"
+                android:textColor="@color/text_dark"
+                android:fontFamily="@font/opensans_semibold"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:transitionName="match_host"
+                android:text="Host: Hoang Duc Thien"/>
+
+        <EditText android:layout_width="match_parent"
+                  android:hint="Game"
+                  android:id="@+id/match_title"
+                  android:fontFamily="@font/opensans_regular"
+                  android:textColorHint="@color/text_dark_30"
+                  android:backgroundTint="@color/text_dark"
+                  android:textColor="@color/text_dark"
+                  android:layout_marginStart="14dp"
+                  android:layout_marginEnd="14dp"
+                  android:layout_height="60dp"/>
+
+        <EditText android:layout_width="match_parent"
+                  android:hint="Reward"
+                  android:id="@+id/match_reward"
+                  android:fontFamily="@font/opensans_regular"
+                  android:textColorHint="@color/text_dark_30"
+                  android:textColor="@color/text_dark"
+                  android:backgroundTint="@color/text_dark"
+                  android:layout_marginStart="14dp"
+                  android:layout_marginEnd="14dp"
+                  android:layout_height="60dp"/>
+
+    </LinearLayout>
+
+    <TextView android:id="@+id/submit_btn"
+              android:layout_width="match_parent"
+              android:layout_height="60dp"
+              android:layout_marginStart="16dp"
+              android:layout_marginEnd="16dp"
+              android:layout_gravity="bottom"
+              android:layout_marginBottom="16dp"
+              android:text="Submit"
+              android:textColor="@color/white"
+              android:gravity="center"
+              android:fontFamily="@font/montserrat_bold"
+              android:textSize="20sp"
+              android:background="@drawable/oc_bg_btn_login"/>
+
+</FrameLayout>
