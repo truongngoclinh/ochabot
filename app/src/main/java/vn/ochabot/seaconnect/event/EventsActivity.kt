@@ -27,10 +27,9 @@ import kotlin.collections.ArrayList
 class EventsActivity : BaseActivity() {
 
     private lateinit var db: FirebaseFirestore
-    private lateinit var events: CollectionReference
+    lateinit var events: CollectionReference
     private var adapter = EventAdapter()
     lateinit var recyclerView: RecyclerView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +39,22 @@ class EventsActivity : BaseActivity() {
         recyclerView = findViewById(R.id.event_list)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+
+        adapter.setOnItemClickListener(object : OnItemClickListener {
+            override fun onItemClick(event: DocumentSnapshot) {
+                //Todo
+            }
+        })
+
+        adapter.setOnJoinClickListener(object : OnJoinClickListener {
+            override fun onJoinClick(data: DocumentSnapshot, memberList: ArrayList<String>) {
+                events.document(data.id).update("members", memberList)
+                    .addOnFailureListener({ e -> Log.e(BaseActivity.TAG, "add failed.", e) })
+                    .addOnSuccessListener(
+                        { Log.e(BaseActivity.TAG, "add success") })
+            }
+        })
+
 //        findViewById<View>(R.id.create_match).setOnClickListener { addEvent() }
     }
 
@@ -62,26 +77,14 @@ class EventsActivity : BaseActivity() {
 
             adapter.mData.clear()
             for (doc in values!!) {
-                adapter.mData.add(convertData(doc))
+                adapter.mData.add(doc)
                 Log.d(TAG, doc.toString())
             }
             adapter.mData.sortWith(Comparator { d1, d2 ->
-                (d1.time - d2.time).toInt()
+                (d1["time_stamp"].toString().toLong() - d2["time_stamp"].toString().toLong()).toInt()
             })
             adapter.notifyDataSetChanged()
         })
-    }
-
-    private fun convertData(data: DocumentSnapshot): Event {
-        val result = Event()
-        result.time = data["time_stamp"].toString().toLong()
-        result.desc = data["desc"].toString()
-        result.host = data["host"].toString()
-        result.name = data["name"].toString()
-        result.location = data["location"].toString()
-        result.members = data["members"] as ArrayList<String>
-//        result.comments = data["comments"] as ArrayList<Comment>
-        return result
     }
 
     override fun contentView(): Int {
@@ -92,15 +95,51 @@ class EventsActivity : BaseActivity() {
         return 0
     }
 
+    open class EventAdapter : RecyclerView.Adapter<EventAdapter.MyViewHolder>() {
 
-    class EventAdapter : RecyclerView.Adapter<EventAdapter.MyViewHolder>() {
+        var mData = ArrayList<DocumentSnapshot>()
 
-        var mData = ArrayList<Event>()
+        var mOnItemClickListener: OnItemClickListener? = null
+        var mOnJoinClickListener: OnJoinClickListener? = null
+
+        fun setOnItemClickListener(listener: OnItemClickListener) {
+            mOnItemClickListener = listener
+        }
+
+        fun setOnJoinClickListener(listener: OnJoinClickListener) {
+            mOnJoinClickListener = listener
+        }
 
         override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): MyViewHolder {
             val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.view_event_item, viewGroup, false)
+            view.setOnClickListener {
+                val data = it.tag
+                data?.let {
+                    mOnItemClickListener?.onItemClick(data as DocumentSnapshot)
+                }
+            }
+            val viewHolder = MyViewHolder(view)
+            viewHolder.joinBtn.setOnClickListener { view ->
+                val data = view.tag
+                data?.let {
+                    val eventData = data as DocumentSnapshot
+                    val event = convertData(eventData)
+                    if ((view as TextView).text.equals(view.context.getString(R.string.label_joined))) {
+                        val newMember = ArrayList<String>()
+                        event.members?.forEach {
+                            if (!it.equals(UserHelper.getUserName())) {
+                                newMember.add(it)
+                            }
+                        }
+                        event.members = newMember
+                    } else {
+                        event.members?.add(UserHelper.getUserName())
+                    }
+                    mOnJoinClickListener?.onJoinClick(eventData, event.members)
 
-            return MyViewHolder(view)
+                }
+            }
+            return viewHolder
         }
 
         override fun getItemCount(): Int {
@@ -109,15 +148,19 @@ class EventsActivity : BaseActivity() {
 
         override fun onBindViewHolder(viewHolder: MyViewHolder, i: Int) {
             val data = mData?.get(i)
+            viewHolder.itemView.tag = data
+            viewHolder.joinBtn.tag = data
             data?.let {
-                viewHolder.time.text = SimpleDateFormat("MMM dd, YYYY hh:mm aa", Locale.ENGLISH).format(Date(it.time))
-                viewHolder.location.text = it.location
-                viewHolder.name.text = it.name
-                viewHolder.detail.text = it.desc
-                viewHolder.hostBy.text = it.host
-                viewHolder.memberNum.text = it.members.size.toString()
+                val convertData = convertData(it)
+                viewHolder.time.text =
+                    SimpleDateFormat("MMM dd, YYYY hh:mm aa", Locale.ENGLISH).format(Date(convertData.time))
+                viewHolder.location.text = convertData.location
+                viewHolder.name.text = convertData.name
+                viewHolder.detail.text = convertData.desc
+                viewHolder.hostBy.text = convertData.host
+                viewHolder.memberNum.text = convertData.members.size.toString()
                 var joined = false
-                it.members.forEach { member ->
+                convertData.members.forEach { member ->
                     if (member.equals(UserHelper.getUserName())) {
                         joined = true
                         return@forEach
@@ -132,6 +175,23 @@ class EventsActivity : BaseActivity() {
                     else ContextCompat.getDrawable(viewHolder.itemView.context, R.drawable.oc_bg_join_btn)
             }
         }
+
+        fun convertData(data: DocumentSnapshot): Event {
+            val result = Event()
+            result.time = data["time_stamp"].toString().toLong()
+            result.desc = data["desc"].toString()
+            result.host = data["host"].toString()
+            result.name = data["name"].toString()
+            result.location = data["location"].toString()
+            data["members"]?.let {
+                result.members = it as ArrayList<String>
+            }
+            data["comments"]?.let {
+                result.comments = it as ArrayList<String>
+            }
+            return result
+        }
+
 
         class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             var time: TextView = itemView.findViewById(R.id.event_time)
@@ -149,5 +209,11 @@ class EventsActivity : BaseActivity() {
         val TAG = "SeaConnectLog"
     }
 
+    interface OnItemClickListener {
+        fun onItemClick(data: DocumentSnapshot)
+    }
 
+    interface OnJoinClickListener {
+        fun onJoinClick(data: DocumentSnapshot, memberList: ArrayList<String>)
+    }
 }
