@@ -1,6 +1,7 @@
 package vn.ochabot.seaconnect.core
 
 import android.app.Application
+import com.google.firebase.FirebaseApp
 import timber.log.Timber
 import vn.ochabot.seaconnect.BuildConfig
 import vn.ochabot.seaconnect.core.di.AppComponent
@@ -20,6 +21,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        FirebaseApp.initializeApp(this)
         initUtils()
         initAppComponent()
     }

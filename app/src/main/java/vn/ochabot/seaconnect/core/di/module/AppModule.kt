@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import vn.ochabot.seaconnect.core.App
+import vn.ochabot.seaconnect.core.Navigator
 import javax.inject.Singleton
 
 /**
@@ -19,4 +20,8 @@ class AppModule(private val application: App) {
     @Provides
     @Singleton
     fun provideGson(): Gson = Gson()
+
+    @Provides
+    @Singleton
+    fun provideNavigator(): Navigator = Navigator()
 }

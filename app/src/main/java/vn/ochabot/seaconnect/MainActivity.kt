@@ -7,7 +7,6 @@ import vn.ochabot.seaconnect.core.base.BaseActivity
 import vn.ochabot.seaconnect.model.User
 
 class MainActivity : BaseActivity() {
-
     override fun title(): Int = R.string.label_app_name
     override fun contentView(): Int = R.layout.activity_main
 
@@ -18,7 +17,7 @@ class MainActivity : BaseActivity() {
         findViewById<TextView>(R.id.user_name).text = user.fullName
 
         findViewById<View>(R.id.lunch_menu).setOnClickListener {
-            //Todo
+            navigator.openLunchActivity(this)
         }
 
         findViewById<View>(R.id.challenge_menu).setOnClickListener {
@@ -38,4 +37,5 @@ class MainActivity : BaseActivity() {
         }
 
     }
+
 }

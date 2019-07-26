@@ -31,16 +31,6 @@ android {
         }
     }
 
-    signingConfigs {
-        debug {
-            storeFile file('../misc/keystore/debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
-            v2SigningEnabled false
-        }
-    }
-
     testOptions {
         unitTests {
             returnDefaultValues true
@@ -100,9 +90,7 @@ dependencies {
 //    debugImplementation devDeps.leakCanary
 //    releaseImplementation devDeps.leakCanaryNoop
 //    testImplementation devDeps.leakCanaryNoop
-
+    implementation 'com.google.firebase:firebase-firestore:19.0.2'
 }
 
-configurations.all {
-    resolutionStrategy.force rootProject.ext.main.appSupport
-}
+apply plugin: 'com.google.gms.google-services'
