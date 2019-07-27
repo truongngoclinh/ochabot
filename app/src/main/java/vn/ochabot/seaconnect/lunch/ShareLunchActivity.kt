@@ -11,11 +11,7 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import kotlinx.android.synthetic.main.activity_lunch.*
 import kotlinx.android.synthetic.main.activity_ordering.*
-import kotlinx.android.synthetic.main.activity_ordering.toolbarIvBack
-import kotlinx.android.synthetic.main.activity_ordering.view.lunchTitle
 import kotlinx.android.synthetic.main.activity_ordering_item.view.*
 import timber.log.Timber
 import vn.ochabot.seaconnect.R
@@ -71,14 +67,14 @@ class ShareLunchActivity : BaseActivity(), RecyclerItemTouchHelper.RecyclerItemT
     private fun initSwipeAction() {
         var callback = RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this)
         itemTouchHelper = ItemTouchHelper(callback)
-        itemTouchHelper.attachToRecyclerView(lunchList)
+        itemTouchHelper.attachToRecyclerView(shareLunchList)
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder?, direction: Int, position: Int) {
     }
 
     private fun initView() {
-        toolbarIvBack.setOnClickListener { onBackPressed() }
+        icBack.setOnClickListener { onBackPressed() }
         lunchId = intent.getStringExtra(KEY_ID)
         if (!TextUtils.isEmpty(lunchId)) {
             val lunch = lunchViewModel.getLunchForId(lunchId)

@@ -13,6 +13,8 @@ public class UserHelper {
         Log.e("deviceKey", "" + deviceId);
         if (deviceId == -1835170376 || deviceId == 326176262) {
             return "Hoàng Đức Thiện";
+        } else if (deviceId == -1835170376) {
+            return "Trương Ngọc Linh";
         }
         return "Lê Minh Nhựt";
     }
