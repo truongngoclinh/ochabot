@@ -7,6 +7,7 @@ import timber.log.Timber
 import vn.ochabot.seaconnect.core.AppConst
 import vn.ochabot.seaconnect.core.base.BaseViewModel
 import vn.ochabot.seaconnect.core.di.AppComponent
+import vn.ochabot.seaconnect.core.helpers.UserHelper
 import javax.inject.Inject
 
 
@@ -44,7 +45,7 @@ class MainViewModel
                 var isFoodSelected = false
                 values!!.documents.forEach {
                     val user = it.data!![AppConst.USER].toString()
-                    if (user.equals("truongngoclinh", true)) {
+                    if (user.equals(UserHelper.getUserId(), true)) {
                         foodSelectedId.postValue(it.data!![AppConst.MEAL_ID].toString())
                         isFoodSelected = true
                     }

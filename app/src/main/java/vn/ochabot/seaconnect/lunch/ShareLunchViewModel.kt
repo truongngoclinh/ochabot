@@ -5,6 +5,7 @@ import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import timber.log.Timber
 import vn.ochabot.seaconnect.core.base.BaseViewModel
+import vn.ochabot.seaconnect.core.helpers.UserHelper
 import javax.inject.Inject
 
 /**
@@ -60,13 +61,13 @@ class ShareLunchViewModel
     fun acceptLunch(lunch: Lunch) {
         Timber.d("Accepting ref: " + lunch.ref)
         loadingStatus.postValue(true)
-        lunch.des = "truongngoclinh"
+        lunch.des = UserHelper.getUserId()
         val map = HashMap<String, Any>()
         map[Lunch.DES] = lunch.des
         db.collection(Lunch.DB).document(lunch.ref).update(map).addOnFailureListener {
             Timber.e("Accepted failed: %s", it)
         }.addOnSuccessListener {
-            updateSelectedFoodDB("truongngoclinh", lunch.id)
+            updateSelectedFoodDB(UserHelper.getUserId(), lunch.id)
         }
     }
 
@@ -87,7 +88,7 @@ class ShareLunchViewModel
     fun getLunchForId(id: String): Lunch {
         for (item in mokeData) {
             if (item.id.equals(id, true)) {
-                item.source = "truongngoclinh"
+                item.source = UserHelper.getUserId()
                 return item
             }
         }

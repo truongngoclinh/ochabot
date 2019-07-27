@@ -24,6 +24,7 @@ import vn.ochabot.seaconnect.core.base.extension.observe
 import vn.ochabot.seaconnect.core.extension.viewModel
 import vn.ochabot.seaconnect.core.helpers.DialogBuilder
 import vn.ochabot.seaconnect.core.helpers.RecyclerItemTouchHelper
+import vn.ochabot.seaconnect.core.helpers.UserHelper
 import java.lang.StringBuilder
 import kotlin.collections.ArrayList
 
@@ -38,6 +39,7 @@ class ShareLunchActivity : BaseActivity(), RecyclerItemTouchHelper.RecyclerItemT
     private lateinit var lunchViewModel: ShareLunchViewModel
     private lateinit var lunchId: String
     private lateinit var itemTouchHelper: ItemTouchHelper
+    private lateinit var dataToLoad: ArrayList<Lunch>
 
     companion object {
         private const val KEY_ID = "key_id"
@@ -71,6 +73,8 @@ class ShareLunchActivity : BaseActivity(), RecyclerItemTouchHelper.RecyclerItemT
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder?, direction: Int, position: Int) {
+        Timber.d("ACCEPTING.....")
+        lunchViewModel.acceptLunch(dataToLoad[position])
     }
 
     private fun initView() {
@@ -104,23 +108,23 @@ class ShareLunchActivity : BaseActivity(), RecyclerItemTouchHelper.RecyclerItemT
         }
         shareLunchAdapter = ShareLunchAdapter(object : ShareLunchItemInteractor {
             override fun onItemClick(data: Lunch, pos: Int) {
-                val holder = shareLunchList.findViewHolderForAdapterPosition(pos)
-                holder?.let {
-                    holder.itemView.acceptFoodButton.visibility = View.VISIBLE
-                    holder.itemView.acceptFoodButton.setOnClickListener {
-                        DialogBuilder(this@ShareLunchActivity)
-                                .titleText("Confirmation")
-                                .contentText("Do you want to accept this meal?")
-                                .confirmText(R.string.label_ok)
-                                .rejectText(R.string.label_cancel)
-                                .onConfirmClick {
-                                    lunchViewModel.acceptLunch(data)
-                                }
-                                .onRejectClick {
-                                }
-                                .createDialog().showDialog()
-                    }
-                }
+//                val holder = shareLunchList.findViewHolderForAdapterPosition(pos)
+//                holder?.let {
+//                    holder.itemView.acceptFoodButton.visibility = View.VISIBLE
+//                    holder.itemView.acceptFoodButton.setOnClickListener {
+//                        DialogBuilder(this@ShareLunchActivity)
+//                                .titleText("Confirmation")
+//                                .contentText("Do you want to accept this meal?")
+//                                .confirmText(R.string.label_ok)
+//                                .rejectText(R.string.label_cancel)
+//                                .onConfirmClick {
+//                                    lunchViewModel.acceptLunch(data)
+//                                }
+//                                .onRejectClick {
+//                                }
+//                                .createDialog().showDialog()
+//                    }
+//                }
             }
         })
         shareLunchList.apply {
@@ -173,7 +177,7 @@ class ShareLunchActivity : BaseActivity(), RecyclerItemTouchHelper.RecyclerItemT
 
     private fun loadData(data: List<Lunch>?) {
         renderLoading(false)
-        var dataToLoad = ArrayList<Lunch>()
+        dataToLoad = ArrayList()
         var isAccepted = false
         var isShared = false
         lateinit var acceptedLunch: Lunch
@@ -182,13 +186,13 @@ class ShareLunchActivity : BaseActivity(), RecyclerItemTouchHelper.RecyclerItemT
                 if (TextUtils.isEmpty(item.des)) {
                     dataToLoad.add(item)
                 } else {
-                    if (item.des.equals("truongngoclinh", true)) {
+                    if (item.des.equals(UserHelper.getUserId(), true)) {
                         isAccepted = true
                         acceptedLunch = item
                     }
                 }
 
-                if (item.source.equals("truongngoclinh", true)) {
+                if (item.source.equals(UserHelper.getUserId(), true)) {
                     isShared = true
                 }
             }
@@ -252,12 +256,27 @@ class ShareLunchActivity : BaseActivity(), RecyclerItemTouchHelper.RecyclerItemT
             }
 
             private fun constructTitle(data: Lunch): String {
+
                 return StringBuilder()
-                        .append(data.source)
+                        .append(getRealName(data.source))
                         .append(" is sharing ")
                         .append(if (!TextUtils.isEmpty(data.title)) data.title else "Salmon")
                         .toString()
 
+            }
+
+            private fun getRealName(name: String): String {
+                if (name.equals("hoangducthien")) {
+                    return "Hoàng Đức Thiện"
+                } else if (name.equals("truongngoclinh")) {
+                    return "Trương Ngọc Linh"
+                } else if (name.equals("phamhoanglong")) {
+                    return "Phạm Hoàng Long"
+                } else if (name.equals("leminhnhut")) {
+                    return "Lê Minh Nhựt"
+                }
+
+                return "Ocha Bot"
             }
         }
     }
