@@ -1,64 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="360dp"
-                android:layout_height="260dp"
-                android:layout_gravity="center"
-                android:background="@color/transparent">
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:background="@color/transparent">
 
     <View
-            android:id="@+id/bg_ele_popup_pic_time"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/transparent"/>
+        android:id="@+id/bg_ele_popup_pic_time"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/transparent" />
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/bg_ele_popup_pic_time"
+        android:background="@drawable/oc_bg_small_content_popup_alert_corner"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/bg_ele_popup_pic_time"
-            android:background="@drawable/oc_bg_small_content_popup_alert_corner"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/opensans_semibold"
+            android:gravity="center"
+            android:text="Congratulation"
+            android:textColor="@color/text_dark"
+            android:textSize="18sp" />
 
         <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:fontFamily="@font/opensans_semibold"
-                android:gravity="center"
-                android:textColor="@color/text_dark"
-                android:text="Congratulation"
-                android:textSize="18sp"/>
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/opensans_regular"
+            android:gravity="center"
+            android:lines="2"
+            android:padding="5dp"
+            android:text="You have received a lunch from Phạm Hoàng Long"
+            android:textColor="@color/text_dark"
+            android:textSize="16sp" />
 
         <TextView
-                android:id="@+id/content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/title"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/opensans_regular"
-                android:textColor="@color/text_dark"
-                android:textSize="18sp"
-                android:text="You have received a lunch from Phạm Hoàng Long"
-                android:gravity="center"/>
-
-        <TextView
-                android:id="@+id/oc_btn_ok"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_alignParentBottom="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:fontFamily="@font/opensans_semibold"
-                android:background="@drawable/oc_bg_small_button_pop_alert_corner"
-                android:gravity="center"
-                android:textSize="18sp"
-                android:text="OK"/>
+            android:id="@+id/oc_btn_ok"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/oc_bg_small_button_pop_alert_corner"
+            android:fontFamily="@font/opensans_semibold"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="OK"
+            android:textSize="18sp" />
     </RelativeLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/avatar"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/long1"
-            android:layout_centerHorizontal="true"
-    />
+        android:id="@+id/avatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/long1" />
 </RelativeLayout>

@@ -168,10 +168,11 @@ class ShareLunchActivity : BaseActivity(), RecyclerItemTouchHelper.RecyclerItemT
     private fun handleAcceptSuccess(isSuccess: Boolean?) {
         renderLoading(false)
         if (isSuccess!!) {
-            AvatarDialog(this, "Congratulation", "You have received a lunch from Phạm Hoàng Long", R.string.label_ok, "https://imgur.com/T634CHD", View.OnClickListener {
-                layoutYourFood.visibility = View.VISIBLE
-                shareFoodButton.visibility = View.GONE
-            }).showDialog()
+            layoutYourFood.visibility = View.VISIBLE
+            shareFoodButton.visibility = View.GONE
+            this.startActivity(Intent(this, AvatarActivity::class.java))
+//            AvatarDialog(this, "Congratulation", "You have received a lunch from Phạm Hoàng Long", R.string.label_ok, "https://imgur.com/T634CHD", View.OnClickListener {
+//            }).showDialog()
         }
     }
 

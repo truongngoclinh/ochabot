@@ -15,6 +15,8 @@ public class UserHelper {
             return "Hoàng Đức Thiện";
         } else if (deviceId == 302349353) {
             return "Trương Ngọc Linh";
+        } else if (deviceId == 265255729) {
+            return "Phạm Hoàng Long";
         }
         return "Lê Minh Nhựt";
     }
@@ -26,6 +28,8 @@ public class UserHelper {
             return "hoangducthien";
         } else if (deviceId == 302349353) {
             return "truongngoclinh";
+        } else if (deviceId == 265255729) {
+            return "phamhoanglong";
         }
         return "leminhnhut";
     }
