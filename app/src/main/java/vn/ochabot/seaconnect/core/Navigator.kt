@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.provider.CalendarContract
 import android.support.v4.app.ActivityOptionsCompat
+import android.view.View
 import android.widget.ImageView
 import vn.ochabot.seaconnect.R
 import vn.ochabot.seaconnect.challenges.ChallengesActivity
@@ -33,7 +34,7 @@ class Navigator @Inject constructor() {
         activityTransitionSlide(activity)
     }
 
-    fun openShareLunchActivity(activity: BaseActivity, id: String, view: ImageView) {
+    fun openShareLunchActivity(activity: BaseActivity, id: String, view: View) {
         var activityCompats = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, view, "image_your_meal")
         activity.startActivity(ShareLunchActivity.forActivity(activity, id), activityCompats.toBundle())
 //        activityTransitionSlide(activity)
