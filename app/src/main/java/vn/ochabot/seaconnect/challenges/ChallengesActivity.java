@@ -41,6 +41,7 @@ public class ChallengesActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         db = FirebaseFirestore.getInstance();
         matches = db.collection("matches");
+
         findViewById(R.id.create_match).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
