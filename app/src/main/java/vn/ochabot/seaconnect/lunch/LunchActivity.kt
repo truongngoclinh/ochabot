@@ -62,8 +62,8 @@ class LunchActivity : BaseActivity() {
         }
 
         submitButton.setOnClickListener {
-            //            navigator.openShareLunchActivity(this@LunchActivity, selectedPos.toString(), selectedImgView)
-            navigator.openShareLunchActivity(this@LunchActivity, selectedPos.toString())
+            navigator.openShareLunchActivity(this@LunchActivity, selectedPos.toString(), selectedImgView)
+//            navigator.openShareLunchActivity(this@LunchActivity, selectedPos.toString())
         }
 
         lunchViewModel.getLunchData()
