@@ -55,5 +55,11 @@
         <activity
                 android:name=".lunch.ShareLunchActivity"
                 android:screenOrientation="portrait"/>
+
+        <activity android:name=".core.helpers.AvatarActivity"
+                  android:theme="@style/OcDialogAppTheme"
+                  android:screenOrientation="portrait"
+        />
+
     </application>
 </manifest>
