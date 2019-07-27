@@ -33,7 +33,7 @@
               android:fontFamily="@font/montserrat_light"
               android:textColor="@color/text_dark"
               android:textSize="14sp"
-              android:transitionName="match_title"
+              android:transitionName="match_reward"
               android:text="Reward: Phuc Long"/>
 
 </LinearLayout>

@@ -10,6 +10,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:padding="12dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:background="?attr/selectableItemBackgroundBorderless"
             app:srcCompat="@drawable/ic_nav_back"/>
@@ -35,7 +36,7 @@
               android:textColor="@color/text_dark"
               android:textSize="16sp"
               android:transitionName="match_title"
-              android:text="Game: Bi lac"/>
+              android:text="Game: bi lac"/>
 
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
@@ -46,8 +47,8 @@
               android:fontFamily="@font/montserrat_light"
               android:textColor="@color/text_dark"
               android:textSize="14sp"
-              android:transitionName="match_title"
-              android:text="Reward: Phuc Long"/>
+              android:transitionName="match_reward"
+              android:text="Reward: phuc long"/>
 
 
     <TextView
