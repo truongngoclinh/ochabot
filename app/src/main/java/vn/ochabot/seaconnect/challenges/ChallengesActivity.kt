@@ -50,7 +50,7 @@ class ChallengesActivity : BaseActivity() {
 
         title_2.setOnClickListener {
             title_2.typeface = ResourcesCompat.getFont(applicationContext, R.font.montserrat_bold)
-            title_2.setTextColor(ContextCompat.getColor(applicationContext, R.color.text_dark))
+            title_2.setTextColor(ContextCompat.getColor(applicationContext, R.color.primary_button_normal))
             title_1.typeface = ResourcesCompat.getFont(applicationContext, R.font.montserrat_regular)
             title_1.setTextColor(ContextCompat.getColor(applicationContext, R.color.text_dark_30))
             adapter.switch()
@@ -164,7 +164,7 @@ class ChallengesActivity : BaseActivity() {
 
         fun switch() {
             type = 1
-            mData2  = ArrayList()
+            mData2 = ArrayList()
             var d1 = HashMap<String, String>()
             d1.put("1", "Hoàng Đức Thiện")
             d1.put("2", "1")

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="14dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/bg_comment"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true">
+
+    <TextView
+            android:id="@+id/user"
+            android:layout_width="wrap_content"
+            style="@style/sea_text_bold.16"
+            android:layout_height="wrap_content"
+            tools:text="Gensler Atchitects"
+    />
+
+    <TextView
+            android:id="@+id/cmt"
+            android:layout_width="wrap_content"
+            style="@style/sea_text.16"
+            android:layout_height="wrap_content"
+            tools:text="New York"
+            android:layout_marginStart="5dp"
+            android:layout_below="@id/user"/>
+
+
+</RelativeLayout>

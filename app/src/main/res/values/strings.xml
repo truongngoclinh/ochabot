@@ -25,4 +25,5 @@
     <string name="label_comments">Comments(%1$d)</string>
     <string name="label_say_something">Say something</string>
     <string name="label_description">Description</string>
+    <string name="label_send">Send</string>
 </resources>
