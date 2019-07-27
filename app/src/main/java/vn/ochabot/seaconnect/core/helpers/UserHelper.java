@@ -13,10 +13,21 @@ public class UserHelper {
         Log.e("deviceKey", "" + deviceId);
         if (deviceId == -1835170376 || deviceId == 326176262) {
             return "Hoàng Đức Thiện";
-        } else if (deviceId == -1835170376) {
+        } else if (deviceId == 302349353) {
             return "Trương Ngọc Linh";
         }
         return "Lê Minh Nhựt";
+    }
+
+    public static String getUserId() {
+        long deviceId = (Build.MODEL + Build.BRAND + Build.MANUFACTURER).hashCode();
+        Log.e("deviceKey", "" + deviceId);
+        if (deviceId == -1835170376 || deviceId == 326176262) {
+            return "hoangducthien";
+        } else if (deviceId == 302349353) {
+            return "truongngoclinh";
+        }
+        return "leminhnhut";
     }
 
     public static String getAvatarUrl(String name) {
