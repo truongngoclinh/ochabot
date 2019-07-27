@@ -89,7 +89,7 @@ class ShareLunchViewModel
     fun getLunchForId(id: String): Lunch {
         for (item in mokeData) {
             if (item.id.equals(id, true)) {
-                return item
+                return Lunch.copy(item)
             }
         }
 

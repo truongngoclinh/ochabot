@@ -22,9 +22,7 @@ import vn.ochabot.seaconnect.core.base.extension.failure
 import vn.ochabot.seaconnect.core.base.extension.loading
 import vn.ochabot.seaconnect.core.base.extension.observe
 import vn.ochabot.seaconnect.core.extension.viewModel
-import vn.ochabot.seaconnect.core.helpers.DialogBuilder
-import vn.ochabot.seaconnect.core.helpers.RecyclerItemTouchHelper
-import vn.ochabot.seaconnect.core.helpers.UserHelper
+import vn.ochabot.seaconnect.core.helpers.*
 import java.lang.StringBuilder
 import kotlin.collections.ArrayList
 
@@ -170,8 +168,10 @@ class ShareLunchActivity : BaseActivity(), RecyclerItemTouchHelper.RecyclerItemT
     private fun handleAcceptSuccess(isSuccess: Boolean?) {
         renderLoading(false)
         if (isSuccess!!) {
-            layoutYourFood.visibility = View.VISIBLE
-            shareFoodButton.visibility = View.GONE
+            AvatarDialog(this, "Congratulation", "You have received a lunch from Phạm Hoàng Long", R.string.label_ok, "https://imgur.com/T634CHD", View.OnClickListener {
+                layoutYourFood.visibility = View.VISIBLE
+                shareFoodButton.visibility = View.GONE
+            }).showDialog()
         }
     }
 
