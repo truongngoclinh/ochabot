@@ -204,7 +204,8 @@ class ShareLunchActivity : BaseActivity(), RecyclerItemTouchHelper.RecyclerItemT
 
         if (isShared) {
             Timber.d("Shared, cant do anything")
-            animateHideLayoutYourFood()
+            layoutYourFood.visibility = View.GONE
+//            animateHideLayoutYourFood()
         } else {
             if (isAccepted) {
                 Timber.d("Found accepted: %s", acceptedLunch.ref)
@@ -278,7 +279,8 @@ class ShareLunchActivity : BaseActivity(), RecyclerItemTouchHelper.RecyclerItemT
                     return "Lê Minh Nhựt"
                 }
 
-                return "Ocha Bot"
+//                return "Ocha Bot"
+                return "Ai đó"
             }
         }
     }

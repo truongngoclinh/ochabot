@@ -91,7 +91,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/opensans_regular"
-                android:text="test"
+                android:text="Hamburger"
                 android:textColor="@color/text_dark"
                 android:textSize="18sp"
                 android:transitionName="match_host" />
@@ -101,6 +101,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:scaleType="fitXY"
                 android:src="@drawable/chevron_right" />
         </LinearLayout>

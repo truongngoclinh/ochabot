@@ -7,6 +7,7 @@ import timber.log.Timber
 import vn.ochabot.seaconnect.core.AppConst
 import vn.ochabot.seaconnect.core.base.BaseViewModel
 import vn.ochabot.seaconnect.core.helpers.UserHelper
+import vn.ochabot.seaconnect.model.User
 import javax.inject.Inject
 
 /**
@@ -36,6 +37,7 @@ class ShareLunchViewModel
                     it.data?.let { map ->
                         var id = map[Lunch.ID].toString()
                         var item = getLunchForId(id)
+                        item.id = map[Lunch.ID].toString()
                         item.source = map[Lunch.SOURCE].toString()
                         item.des = map[Lunch.DES].toString()
                         item.ref = ref
@@ -51,7 +53,10 @@ class ShareLunchViewModel
 
     fun shareLunch(id: String) {
         loadingStatus.postValue(true)
-        db.collection(Lunch.DB).document(System.nanoTime().toString()).set(getLunchForId(id)).addOnSuccessListener {
+        var lunch = getLunchForId(id)
+        lunch.source = UserHelper.getUserId()
+        lunch.id = id
+        db.collection(Lunch.DB).document(System.nanoTime().toString()).set(lunch).addOnSuccessListener {
             loadingStatus.postValue(false)
             isLunchShared.postValue(true)
         }.addOnFailureListener {

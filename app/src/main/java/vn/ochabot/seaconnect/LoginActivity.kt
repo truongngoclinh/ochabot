@@ -2,6 +2,7 @@ package vn.ochabot.seaconnect
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import vn.ochabot.seaconnect.core.base.BaseActivity
 
@@ -14,9 +15,10 @@ class LoginActivity : BaseActivity() {
 
         findViewById<View>(R.id.login_btn).setOnClickListener {
             renderLoading(true)
-            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-            hideLoading()
+            Handler().postDelayed(Runnable {
+                hideLoading()
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            }, 2000)
         }
-
     }
 }
