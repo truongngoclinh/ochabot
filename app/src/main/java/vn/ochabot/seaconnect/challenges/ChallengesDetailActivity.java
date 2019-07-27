@@ -115,13 +115,14 @@ public class ChallengesDetailActivity extends BaseActivity {
                         if (team1List.contains(UserHelper.getUserName())) {
                             team1List.remove(UserHelper.getUserName());
                             batch.update(match, Match.TEAM_1, team1List);
-
-                            List<String> team2List = (List<String>) matchSnapShot.get(Match.TEAM_2);
+                        }
+                        List<String> team2List = (List<String>) matchSnapShot.get(Match.TEAM_2);
+                        if (!team2List.contains(UserHelper.getUserName())) {
                             team2List.add(UserHelper.getUserName());
                             batch.update(match, Match.TEAM_2, team2List);
-
-                            batch.commit();
                         }
+
+                        batch.commit();
                     } else if (matchStatus == Match.STATUS_STARTED) {
                         match.update(Match.MATCH_STATUS, Match.STATUS_TEAM_2_WIN);
                         finish();
