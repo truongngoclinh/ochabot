@@ -7,7 +7,7 @@
                 android:layout_height="match_parent">
 
     <ImageView
-            android:id="@+id/toolbarIvBack"
+            android:id="@+id/ic_back"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:adjustViewBounds="true"
@@ -21,7 +21,7 @@
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/toolbarIvBack"
+            android:layout_below="@+id/ic_back"
             android:orientation="horizontal">
 
         <TextView
