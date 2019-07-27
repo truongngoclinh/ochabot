@@ -4,6 +4,7 @@ import android.arch.lifecycle.MutableLiveData
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import timber.log.Timber
+import vn.ochabot.seaconnect.core.AppConst
 import vn.ochabot.seaconnect.core.base.BaseViewModel
 import vn.ochabot.seaconnect.core.helpers.UserHelper
 import javax.inject.Inject
@@ -33,8 +34,8 @@ class ShareLunchViewModel
                 values!!.documents.forEach {
                     val ref = it.id
                     it.data?.let { map ->
-                        val id = map[Lunch.ID].toString()
-                        val item = getLunchForId(id)
+                        var id = map[Lunch.ID].toString()
+                        var item = getLunchForId(id)
                         item.source = map[Lunch.SOURCE].toString()
                         item.des = map[Lunch.DES].toString()
                         item.ref = ref
@@ -75,7 +76,7 @@ class ShareLunchViewModel
         var map = HashMap<String, String>()
         map["user"] = user
         map["meal_id"] = id
-        db.collection(Lunch.DB).document(System.nanoTime().toString()).set(map).addOnSuccessListener {
+        db.collection(AppConst.FOOD_SELECTED).document(System.nanoTime().toString()).set(map).addOnSuccessListener {
             loadingStatus.postValue(false)
             isLunchAccepted.postValue(true)
         }.addOnFailureListener {
@@ -88,7 +89,6 @@ class ShareLunchViewModel
     fun getLunchForId(id: String): Lunch {
         for (item in mokeData) {
             if (item.id.equals(id, true)) {
-                item.source = UserHelper.getUserId()
                 return item
             }
         }
