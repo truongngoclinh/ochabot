@@ -14,12 +14,18 @@ import javax.inject.Singleton
  */
 @Module
 class RepositoryModule {
-    @Provides
-    @Singleton
-    fun provideMealsData(): ArrayList<Lunch> {
+    private var meals: ArrayList<Lunch>
+
+    init {
         val json = ResourcesHelper.getAsset("meals.json")
         val typeToken = object : TypeToken<List<Lunch>>() {}.type
 
-        return Gson().fromJson<ArrayList<Lunch>>(json, typeToken)
+        meals = Gson().fromJson<ArrayList<Lunch>>(json, typeToken)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMealsData(): ArrayList<Lunch> {
+        return meals
     }
 }

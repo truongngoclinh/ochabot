@@ -1,5 +1,6 @@
 package vn.ochabot.seaconnect.event
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -7,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
@@ -52,8 +54,11 @@ open class EventDetailActivity : BaseActivity() {
         events = db.collection("events").document(eventId)
         comments = db.collection("comments")
 
+        findViewById<View>(R.id.ic_back).setOnClickListener { onBackPressed() }
+
         send_btn.setOnClickListener {
             addComment(comment_input.text.toString())
+            hideKeyboard(comment_input)
             comment_input.text.clear()
         }
 
@@ -141,6 +146,19 @@ open class EventDetailActivity : BaseActivity() {
 
     override fun title(): Int {
         return 0
+    }
+
+    fun hideKeyboard(v: View?) {
+        if (v == null) {
+            return
+        }
+
+        val context = v.context ?: return
+
+        val token = v.windowToken ?: return
+
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(token, 0)
     }
 
     open class CommentAdapter : RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {

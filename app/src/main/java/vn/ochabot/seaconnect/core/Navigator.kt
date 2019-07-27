@@ -7,6 +7,7 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.widget.ImageView
 import vn.ochabot.seaconnect.R
 import vn.ochabot.seaconnect.challenges.ChallengesActivity
+import vn.ochabot.seaconnect.challenges.ChallengesAddActivity
 import vn.ochabot.seaconnect.core.base.BaseActivity
 import vn.ochabot.seaconnect.event.EventDetailActivity
 import vn.ochabot.seaconnect.event.EventsActivity
@@ -53,6 +54,10 @@ class Navigator @Inject constructor() {
         val intent = Intent(activity, EventDetailActivity::class.java)
         intent.putExtra(CalendarContract.Instances.EVENT_ID, eventId)
         activity.startActivity(intent)
+    }
+
+    fun openChallengesAddActivity(activity: BaseActivity) {
+        activity.startActivity(Intent(activity, ChallengesAddActivity::class.java))
         activityTransitionSlide(activity)
     }
 }

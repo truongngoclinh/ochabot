@@ -1,13 +1,7 @@
 package vn.ochabot.seaconnect.event
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.provider.CalendarContract.Instances.EVENT_ID
-import android.support.v4.app.ActivityCompat
-import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.content.ContextCompat
-import android.support.v4.util.Pair
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -20,7 +14,6 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import vn.ochabot.seaconnect.R
-import vn.ochabot.seaconnect.challenges.ChallengesDetailActivity
 import vn.ochabot.seaconnect.core.base.BaseActivity
 import vn.ochabot.seaconnect.core.helpers.UserHelper
 import vn.ochabot.seaconnect.model.Event
@@ -44,6 +37,9 @@ class EventsActivity : BaseActivity() {
         appComponent.inject(this)
         db = FirebaseFirestore.getInstance()
         events = db.collection("events")
+
+        findViewById<View>(R.id.ic_back).setOnClickListener { onBackPressed() }
+
         showEvents()
         recyclerView = findViewById(R.id.event_list)
         recyclerView.layoutManager = LinearLayoutManager(this)

@@ -45,7 +45,7 @@ class LunchActivity : BaseActivity() {
     }
 
     private fun initView() {
-        toolbarIvBack.setOnClickListener { this@LunchActivity.finish() }
+        icBack.setOnClickListener { onBackPressed() }
         title_1.text = "Lunch"
         lunchAdapter = LunchAdapter(object : ItemInteractor<Lunch> {
             override fun onItemClick(data: Lunch, pos: Int) {

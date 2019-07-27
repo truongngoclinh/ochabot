@@ -3,15 +3,15 @@ package vn.ochabot.seaconnect.lunch
 import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
 import kotlinx.android.synthetic.main.activity_ordering.*
-import kotlinx.android.synthetic.main.activity_ordering.view.lunchTitle
 import kotlinx.android.synthetic.main.activity_ordering_item.view.*
 import timber.log.Timber
 import vn.ochabot.seaconnect.R
@@ -23,19 +23,21 @@ import vn.ochabot.seaconnect.core.base.extension.loading
 import vn.ochabot.seaconnect.core.base.extension.observe
 import vn.ochabot.seaconnect.core.extension.viewModel
 import vn.ochabot.seaconnect.core.helpers.DialogBuilder
+import vn.ochabot.seaconnect.core.helpers.RecyclerItemTouchHelper
 import java.lang.StringBuilder
 import kotlin.collections.ArrayList
 
 /**
  * @author linhtruong
  */
-class ShareLunchActivity : BaseActivity() {
+class ShareLunchActivity : BaseActivity(), RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
     override fun title(): Int = R.string.label_share_lunch_activity
     override fun contentView(): Int = R.layout.activity_ordering
 
     private lateinit var shareLunchAdapter: ShareLunchAdapter
     private lateinit var lunchViewModel: ShareLunchViewModel
     private lateinit var lunchId: String
+    private lateinit var itemTouchHelper: ItemTouchHelper
 
     companion object {
         private const val KEY_ID = "key_id"
@@ -59,10 +61,20 @@ class ShareLunchActivity : BaseActivity() {
         }
 
         initView()
+        initSwipeAction()
+    }
+
+    private fun initSwipeAction() {
+        var callback = RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this)
+        itemTouchHelper = ItemTouchHelper(callback)
+        itemTouchHelper.attachToRecyclerView(shareLunchList)
+    }
+
+    override fun onSwiped(viewHolder: RecyclerView.ViewHolder?, direction: Int, position: Int) {
     }
 
     private fun initView() {
-        toolbarIvBack.setOnClickListener { this@ShareLunchActivity.finish() }
+        icBack.setOnClickListener { onBackPressed() }
         lunchId = intent.getStringExtra(KEY_ID)
         if (!TextUtils.isEmpty(lunchId)) {
             val lunch = lunchViewModel.getLunchForId(lunchId)
@@ -87,7 +99,7 @@ class ShareLunchActivity : BaseActivity() {
                     .onConfirmClick {
                         lunchViewModel.shareLunch(lunchId)
                     }
-                    .onRejectClick {  }
+                    .onRejectClick { }
                     .createDialog().showDialog()
         }
         shareLunchAdapter = ShareLunchAdapter(object : ShareLunchItemInteractor {
@@ -114,6 +126,7 @@ class ShareLunchActivity : BaseActivity() {
         shareLunchList.apply {
             adapter = shareLunchAdapter
             layoutManager = LinearLayoutManager(this@ShareLunchActivity, LinearLayoutManager.VERTICAL, false)
+            itemAnimator = DefaultItemAnimator()
             addItemDecoration(VerticalSpaceItemDecoration(50))
         }
 
@@ -129,8 +142,10 @@ class ShareLunchActivity : BaseActivity() {
 
     private fun animateHideLayoutYourFood() {
         layoutYourFood.animate()
-                .translationY(-(layoutYourFood.height + 50).toFloat())
-                .setDuration(500)
+//                .translationY(-(layoutYourFood.height + 50).toFloat())
+//                .translationY(-(layoutYourFood.width + 50).toFloat())
+                .alpha(0.0f)
+                .setDuration(700)
                 .setListener(object : Animator.AnimatorListener {
                     override fun onAnimationRepeat(p0: Animator?) {
                     }
@@ -223,9 +238,9 @@ class ShareLunchActivity : BaseActivity() {
 
             override fun bindData(data: Lunch, position: Int) {
                 itemView.apply {
-                    lunchTitle.text = constructTitle(data)
+                    itemLunchTitle.text = constructTitle(data)
                     if (!TextUtils.isEmpty(data.url)) {
-                        lunchImg.setImageResource(
+                        itemLunchImg.setImageResource(
                                 context.resources.getIdentifier(
                                         data.url,
                                         "drawable",
@@ -237,7 +252,12 @@ class ShareLunchActivity : BaseActivity() {
             }
 
             private fun constructTitle(data: Lunch): String {
-                return StringBuilder().append(data.source).append(" is sharing ").append(data.title).toString()
+                return StringBuilder()
+                        .append(data.source)
+                        .append(" is sharing ")
+                        .append(if (!TextUtils.isEmpty(data.title)) data.title else "Salmon")
+                        .toString()
+
             }
         }
     }

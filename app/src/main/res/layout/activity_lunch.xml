@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="@dimen/activity_horizontal_margin">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/title"
@@ -13,14 +12,14 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/toolbarIvBack"
+            android:id="@+id/icBack"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:adjustViewBounds="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:padding="12dp"
-            app:srcCompat="@drawable/ic_nav_back" />
+            app:srcCompat="@drawable/chevron_left" />
 
         <TextView
             android:id="@+id/title_1"
@@ -41,7 +40,7 @@
             android:adjustViewBounds="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
-            android:padding="12dp"
+            android:padding="8dp"
             android:src="@drawable/check" />
     </LinearLayout>
 

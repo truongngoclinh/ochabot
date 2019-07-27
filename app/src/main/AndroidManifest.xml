@@ -23,12 +23,19 @@
         <activity
                 android:name=".challenges.ChallengesDetailActivity"
                 android:screenOrientation="portrait"/>
+
+        <activity
+                android:name=".challenges.ChallengesAddActivity"
+                android:screenOrientation="portrait"/>
+
         <activity
                 android:name=".MainActivity"
                 android:screenOrientation="portrait"/>
+
         <activity
                 android:name=".challenges.ChallengesActivity"
                 android:screenOrientation="portrait"/>
+
         <activity
                 android:name=".lunch.LunchActivity"
                 android:screenOrientation="portrait"/>

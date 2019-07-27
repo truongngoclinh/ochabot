@@ -16,6 +16,7 @@ public interface Match {
     String TITLE = "title";
     String TIME_STAMP = "time_stamp";
     String MATCH_STATUS = "match_status";
+    String MATCH_REWARD = "match_reward";
     String TEAM_1 = "team_1";
     String TEAM_2 = "team_2";
 }
