@@ -19,7 +19,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:padding="12dp"
-            app:srcCompat="@drawable/ic_nav_back" />
+            app:srcCompat="@drawable/chevron_left" />
 
         <TextView
             android:id="@+id/title_1"
@@ -40,7 +40,7 @@
             android:adjustViewBounds="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
-            android:padding="12dp"
+            android:padding="8dp"
             android:src="@drawable/check" />
     </LinearLayout>
 

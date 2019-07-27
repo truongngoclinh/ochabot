@@ -21,7 +21,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:padding="12dp"
-            app:srcCompat="@drawable/ic_nav_back" />
+            app:srcCompat="@drawable/chevron_left" />
 
         <TextView
             android:id="@+id/title_1"
@@ -30,7 +30,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="30dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="Share Lunch"
+            android:text="Lunch"
             android:textColor="@color/text_dark"
             android:textSize="22sp" />
     </LinearLayout>
