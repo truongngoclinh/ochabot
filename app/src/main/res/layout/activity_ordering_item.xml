@@ -1,47 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/bg_white_square_rounded"
-    android:foreground="?attr/selectableItemBackgroundBorderless"
-    android:padding="@dimen/activity_horizontal_margin">
+    android:layout_height="wrap_content">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_margin="3dp"
-        app:cardCornerRadius="6dp"
-        app:cardElevation="0dp">
+    <RelativeLayout
+        android:id="@+id/viewBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_white_square_rounded"
+        android:foreground="?attr/selectableItemBackgroundBorderless">
 
         <ImageView
-            android:id="@+id/lunchImg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/delete_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/accept" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/delete_icon"
+            android:fontFamily="@font/opensans_semibold"
+            android:text="ACCEPT"
+            android:textAllCaps="true"
+            android:textColor="#fff"
+            android:textSize="18dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/viewForeground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_square_rounded"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="3dp"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/itemLunchImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:src="@drawable/meal_0"
+                android:transitionName="image_your_meal" />
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/itemLunchTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/opensans_regular"
+            android:padding="10dp"
+            android:text="test"
+            android:textColor="@color/text_dark"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/acceptFoodButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:scaleType="fitXY"
-            android:src="@drawable/meal_0"
-            android:transitionName="image_your_meal" />
-    </android.support.v7.widget.CardView>
+            android:src="@drawable/accept"
+            android:visibility="gone" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/lunchTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:fontFamily="@font/opensans_regular"
-        android:padding="10dp"
-        android:text="test"
-        android:textColor="@color/text_dark"
-        android:textSize="18sp" />
-
-    <ImageView
-        android:id="@+id/acceptFoodButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center"
-        android:scaleType="fitXY"
-        android:src="@drawable/check"
-        android:visibility="gone" />
-</LinearLayout>
+</FrameLayout>
