@@ -171,7 +171,7 @@ class ChallengesActivity : BaseActivity() {
             mData2!!.add(d1)
             var d2 = HashMap<String, String>()
             d2.put("1", "Lê Minh Nhựt")
-            d1.put("2", "1")
+            d2.put("2", "1")
             mData2!!.add(d2)
             var d3 = HashMap<String, String>()
             d3.put("1", "Trương Ngọc Linh")
