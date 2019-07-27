@@ -56,6 +56,14 @@ class ChallengesActivity : BaseActivity() {
             adapter.switch()
         }
 
+        title_1.setOnClickListener {
+            title_1.typeface = ResourcesCompat.getFont(applicationContext, R.font.montserrat_bold)
+            title_1.setTextColor(ContextCompat.getColor(applicationContext, R.color.primary_button_normal))
+            title_2.typeface = ResourcesCompat.getFont(applicationContext, R.font.montserrat_regular)
+            title_2.setTextColor(ContextCompat.getColor(applicationContext, R.color.text_dark_30))
+            adapter.switch()
+        }
+
 
         showMatches()
     }
@@ -163,25 +171,30 @@ class ChallengesActivity : BaseActivity() {
         var type = 0;
 
         fun switch() {
-            type = 1
-            mData2 = ArrayList()
-            var d1 = HashMap<String, String>()
-            d1.put("1", "Hoàng Đức Thiện")
-            d1.put("2", "1")
-            mData2!!.add(d1)
-            var d2 = HashMap<String, String>()
-            d2.put("1", "Lê Minh Nhựt")
-            d2.put("2", "1")
-            mData2!!.add(d2)
-            var d3 = HashMap<String, String>()
-            d3.put("1", "Trương Ngọc Linh")
-            d3.put("2", "-1")
-            mData2!!.add(d3)
-            var d4 = HashMap<String, String>()
-            d4.put("1", "Phạm Hoàng Long")
-            d4.put("2", "-1")
-            mData2!!.add(d4)
-            notifyDataSetChanged()
+            if (type == 0) {
+                type = 1
+                mData2 = ArrayList()
+                var d1 = HashMap<String, String>()
+                d1.put("1", "Hoàng Đức Thiện")
+                d1.put("2", "1")
+                mData2!!.add(d1)
+                var d2 = HashMap<String, String>()
+                d2.put("1", "Lê Minh Nhựt")
+                d2.put("2", "1")
+                mData2!!.add(d2)
+                var d3 = HashMap<String, String>()
+                d3.put("1", "Trương Ngọc Linh")
+                d3.put("2", "-1")
+                mData2!!.add(d3)
+                var d4 = HashMap<String, String>()
+                d4.put("1", "Phạm Hoàng Long")
+                d4.put("2", "-1")
+                mData2!!.add(d4)
+                notifyDataSetChanged()
+            } else {
+                type = 0
+                notifyDataSetChanged()
+            }
         }
     }
 
